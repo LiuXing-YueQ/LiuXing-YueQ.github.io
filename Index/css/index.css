@@ -1,14 +1,32 @@
-.body {
+body {
   background-color: #020617;
+  height: 100vh;
+  color: white;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.body .index ul {
+body .index ul {
   margin: 0;
 }
-.body .index ul li {
+body .index ul li {
+  width: 400px;
+  text-align: center;
+  height: 80px;
   list-style: none;
   margin: 0;
+  transition: all 0.5s;
 }
-.body .index ul li a {
+body .index ul li:hover {
+  font-weight: bold;
+  background: -webkit-linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  animation: gradient-text 3s ease infinite;
+}
+body .index ul a {
   /* 移除下划线 */
   text-decoration: none;
   /* 移除默认的颜色 */
@@ -17,11 +35,20 @@
   outline: none;
   /* 移除鼠标悬停时的样式变化 */
 }
-.body .index ul li a:hover,
-.body .index ul li a:focus,
-.body .index ul li a:active {
+body .index ul a:hover,
+body .index ul a:focus,
+body .index ul a:active {
   text-decoration: none;
   color: inherit;
   outline: none;
+}
+@keyframes gradient-text {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 /*# sourceMappingURL=./index.css.map */
