@@ -1,19 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./Index/css/index.css">
-    <script  src="./Index/js/jQuery.min.js"></script>
+    <script src="./Index/js/jQuery.min.js"></script>
 </head>
+
 <body>
-    <div class="index">
-        <ul>
-            <li></li>
-            <li><a href="./响应式布局(bs3)/威尼斯首页/index.html"><h1>响应式布局项目-威尼斯首页</h1></a></li>
-            <li></li>
-        </ul>
-    </div>
+
+    <main>
+        <div class="index">
+
+
+            <ul class="index-img">
+                <li><img src="" alt=""></li>
+            </ul>
+
+            <ul class="index-right">
+                <li id="XiangyingshiBtn">
+                    <h1>响应式布局</h1>
+                    <ul class="index-hidden" id="XiangyinshiLi">
+                        <a href="./响应式布局(bs3)/威尼斯首页/index.html">
+                            <h2>响应式布局项目-威尼斯首页</h2>
+                        </a>
+                    </ul>
+                </li>
+                
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>可以滚动哦！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+                <li><h1>正在开发中！</h1></li>
+
+            </ul>
+        </div>
+    </main>
+
+
+    <script>
+        // 封装的原型，传入一个按钮的id，和内容id，可以指定显示和隐藏的元素
+        class show {
+            constructor(btnname, id) {
+                this.id = id
+                this.btnname = btnname
+            }
+
+            clicks() {
+                let btn = this.btnname
+                let id = this.id
+
+                $(`#${btn}`).click(function () {
+
+
+                    let contentBox = $(`#${id}`);
+                    console.log(contentBox);
+
+
+                    if (contentBox.is(':visible')) {
+
+                        contentBox.slideUp('slow', function () {
+                            console.log('内容已隐藏', id, btn);
+
+                        });
+
+                    } else {
+                        contentBox.slideDown('slow', function () {
+                            console.log('内容已显示', id);
+                        });
+                    }
+                });
+            }
+        }
+
+
+    </script>
 </body>
+
 </html>

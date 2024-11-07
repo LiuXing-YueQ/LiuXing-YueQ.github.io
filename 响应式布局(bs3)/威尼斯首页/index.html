@@ -1460,39 +1460,11 @@
     $(document).ready(function () {
 
 
-        // 封装的原型，传入一个按钮的id，和内容id，可以指定显示和隐藏的元素
-        class show {
-            constructor(btnname, id) {
-                this.id = id
-                this.btnname = btnname
-            }
-
-            clicks() {
-                let btn = this.btnname
-                let id = this.id
-
-                $(`#${btn}`).click(function () {
-
-
-                    let contentBox = $(`#${id}`);
-                    console.log(contentBox);
-
-
-                    if (contentBox.is(':visible')) {
-
-                        contentBox.slideUp('slow', function () {
-                            console.log('内容已隐藏', id, btn);
-
-                        });
-
-                    } else {
-                        contentBox.slideDown('slow', function () {
-                            console.log('内容已显示', id);
-                        });
-                    }
-                });
-            }
-        }
+        ::-webkit-scrollbar {
+  width: 0;  /* Chrome, Safari, and Opera */
+}::-webkit-scrollbar {
+  width: 0;  /* Chrome, Safari, and Opera */
+}
 
 
         // 顶部栏
