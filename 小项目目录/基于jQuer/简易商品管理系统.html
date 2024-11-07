@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>简易商品管理系统</title>
+    <script src="./js/jQuery.min.js"></script>
+    <style>
+        /* CSS样式 */
+        .htmlbox {
+            background: linear-gradient(to bottom right, #3498db, #9b59b6, #e74c3c, #f1c40f);
+            display: flex;
+            flex-flow: column;
+            width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border: 2px solid;
+            border-radius: 15px;
+
+        }
+
+
+        #productForm {
+            width: 200px;
+            height: 300px;
+            /* background-color: aqua; */
+            display: flex;
+            flex-flow: column;
+            justify-content: space-evenly;
+
+        }
+
+        .froms {
+            width: 600px;
+            height: 300px;
+            /* background-color: aqua; */
+            display: flex;
+            /* flex-flow: column; */
+            justify-content: space-evenly;
+            align-items: center;
+
+            /* background-color: aquamarine; */
+            margin: 30px auto;
+
+            border: 2px solid #201f1f;
+            background-color: antiquewhite;
+            border-radius: 15px;
+            padding: 20px;
+
+        }
+
+        .imgbox {
+            width: 300px;
+            height: 290px;
+            border: 2px solid #000;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+
+        }
+
+        #addButton {
+            height: 40px;
+            background-color: #3498db;
+            /* 初始背景颜色 */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            /* 可选，为按钮添加圆角 */
+            transition: background 0.1s ease;
+            /* 平滑背景变化 */
+            background-size: 200% 200%;
+            /* 确保渐变背景足够大 */
+            background-image: linear-gradient(to bottom right, #3498db, #9b59b6, #e74c3c, #f1c40f);
+            /* 初始渐变 */
+            border-radius: 20px;
+        }
+
+
+
+        #addButton:hover {
+            animation: gradientShift 3s infinite;
+            /* 应用渐变动画 */
+        }
+        .Text {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 13px;
+
+        }
+
+        .Text>div {
+            width: 50px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            /* background-color: aqua; */
+            color: #e11414;
+
+        }
+
+        #preview {
+            width: 240px;
+            height: 240px;
+            border: 2px solid #000;
+        }
+
+        #preview img {
+            width: 240px;
+            height: 240px;
+            /* border: 2px solid #e11414; */
+        }
+
+        #productTable td {
+            border: 1px solid;
+        }
+
+        #productTable img {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+
+
+
+        .dic {
+            width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #searchInput {
+
+            width: 600px;
+            height: 40px;
+            border-radius: 25px;
+            padding: 0 30px;
+            /* position: relative; */
+        }
+
+
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            /* white-space: normal; */
+            /* border-radius: 15px; */
+            /* height: 800px; */
+        }
+
+        th,
+        td {
+            height: 30px;
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        /* tr{
+            
+        } */
+
+        td {
+            height: 50px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #eaeaea;
+        }
+
+        .zonshu {
+            background-color: #eaeaea;
+            border-radius: 25px;
+            width: 150px;
+            margin: 5px auto;
+            text-align: center;
+            position: absolute;
+            top: 6px;
+            right: 88px;
+        }
+
+        .delbtn {
+            width: 40%;
+            height: 40%;
+            background-color: #ffffff;
+            /* 初始背景颜色 */
+            color: rgb(0, 0, 0);
+           border-radius: 60px;
+           transition: all 0.5s;
+
+        }
+
+        .delbtn:hover {
+            width: 80%;
+            height: 80%;
+            background-color: #e11414;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .val{
+            /* display: block; */
+            text-align: center;
+            width: 80px;
+            background-color: #f9f9f9;
+            border: none;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="htmlbox">
+        <h1 style="margin: 40px auto ; text-align: center; color: #f9f9f9;">简易商品管理系统</h1>
+
+
+        <div class="froms">
+            <form id="productForm">
+                名称:<input type="text" id="name" >
+                价格:<input type="number" id="price">
+                库存:<input type="number" id="stock">
+                图片:<input type="file" accept="image/*">
+                <button type="button" id="addButton">添加商品</button>
+            </form>
+
+            <div class="imgbox">
+                <div id="preview">
+
+
+                </div>
+                <div class="Text">
+                    名称: <div class="item1"></div>
+                    价格: <div class="item2"></div>
+                    库存: <div class="item3"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="dic">
+
+            <input type="text" id="searchInput" placeholder="输入商品名称回车后搜索">
+            <!-- <button type="button" id="searchButton">搜索商品</button> -->
+
+            <div class="zonshu">一共 <span id="totalStock">0</span>件商品</div>
+        </div>
+        <table id="productTable">
+            <tr>
+                <th>名称</th>
+                <th>价格</th>
+                <th>库存</th>
+                <th>预览</th>
+                <th>操作</th>
+            </tr>
+
+            <!-- 商品信息行将被动态添加 -->
+        </table>
+
+    </div>
+    <script>
+
+
+
+
+        $(document).ready(function () {
+            // jQuery代码
+            let $btn = $('#addButton')
+            let $img = $('input[type=file]')
+
+            let $from = $('#productForm')
+            let $Text = $('.Text')
+
+            let $table = $('#productTable')
+
+            $from.on('input', 'input', function () {
+
+                console.log($Text.find('div').eq($(this).index()).text($(this).val()));
+
+
+
+            })
+
+
+
+            $img.change(function () {
+                // 获取文件列表
+
+                let files = $(this)[0].files;
+                let preview = $('#preview');
+
+                // 清空之前的预览
+                preview.empty();
+
+                // 遍历所有选中的文件
+                for (let i = 0; i < files.length; i++) {
+                    // 检查是否为图片文件
+                    if (files[i].type.match('image.*')) {
+                        // 创建一个新URL对象
+                        let fileUrl = URL.createObjectURL(files[i]);
+
+                        // 创建一个新的img元素并设置src属性
+                        let img = $('<img>')
+                            .attr('src', fileUrl)
+
+
+                        // 将img元素添加到预览区域
+                        preview.append(img);
+                    }
+                }
+            });
+
+
+
+
+
+
+
+
+
+            $btn.click(function () {
+
+                // 获取表单数据
+                let $name = $('#name').val()
+                let $price = $('#price').val()
+                let $stock = $('#stock').val()
+
+                let $img2 = ''
+
+
+
+                let files = $img[0].files;
+                let preview = $('#preview');
+                let $imgX = $('.imgX')
+
+                // 清空之前的预览
+                // preview.empty();
+
+                // 遍历所有选中的文件
+                for (let i = 0; i < files.length; i++) {
+                    // 检查是否为图片文件
+                    if (files[i].type.match('image.*')) {
+                        // 创建一个新URL对象
+                        let fileUrl = URL.createObjectURL(files[i]);
+
+                        // 创建一个新的img元素并设置src属性
+                        let img = fileUrl
+
+
+
+                        // 将img元素添加到预览区域
+                        // $imgX.append(img);
+                        // .append(btnn)
+
+                        $img2 = img
+                    }
+                }
+
+                console.log($img2);
+
+
+                if ($name && $price && $stock) {
+
+
+                    let tr = $(`<tr class="show  oned">
+                    <td class="spName">${$name}</td>
+                    <td><input type="number" class='val' value="${$price}">元</td>
+                    <td><input type="number" class='val' value="${$stock}">个</td>
+                    <td><img src="${$img2}" alt=""  class="yulanimg"></td>
+                    <td ><button type="button" class='delbtn'>删除</button></td>
+                        
+                </tr>`)
+
+                    $table.append(tr)
+
+                    let delbtn = $('.delbtn')
+
+                    delbtn.click(function () {
+
+                        $(this).parent().parent().remove()
+                        $('#totalStock').text($('.show').length)
+
+                    })
+
+
+                }
+
+                $('#totalStock').text($('.show').length)
+
+                // console.log('长度', $('.show'));
+
+                // console.log();
+
+
+                $('#productForm')[0].reset()
+                // $('#price').val('')
+                // $('#stock').val('')
+
+
+            })
+
+
+
+            
+            $('#searchInput').change(function () {
+                let searchValue = $('#searchInput').val().toLowerCase();
+                
+                $table.find('.oned').each(function () {
+                    let name = $(this).find('.spName').text().toLowerCase();
+                    if (name.includes(searchValue)) {
+                        $(this).addClass('show');
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                        // $('one').show()
+                        $(this).removeClass('show');
+                        // $('one').addClass('show');
+
+                    }
+                });
+                $('#totalStock').text($('.show').length)
+
+            });
+
+
+            $('#searchButton').click(function () {
+                let searchValue = $('#searchInput').val().toLowerCase();
+                $table.find('tr').each(function () {
+                    let name = $(this).find('.spName').text().toLowerCase();
+                    if (name.includes(searchValue)) {
+                        $(this).addClass('show');
+                        $(this).show();
+                    } else {
+                        $(this).removeClass('show');
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+
+        });
+    </script>
+</body>
+
+</html>

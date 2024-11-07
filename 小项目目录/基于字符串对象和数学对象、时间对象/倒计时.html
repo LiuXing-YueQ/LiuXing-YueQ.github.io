@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 作业: 倒计时
+        // 距离指定日期还有 xx天xx小时xx分钟xx秒
+        // 输出到页面上:  document.body.innerHTML = "<h3>距离目标时间还有: "+day+"天"+hours+"小时"+min+"分钟"+s+"秒</h3>"
+
+
+        let timeSet = new Date(prompt('请输入需要计算剩余时间的日期 格式\n 年-月-日[空格]时:分:秒'))
+        console.log("设置的时间为", timeSet);
+
+        setInterval(function () {
+            let timeX = Date.now()
+            // console.log("现在的时间为", timeX);
+            let mins = timeSet - timeX
+
+            if (mins > 0) {
+                // console.log('剩余秒数', mins);
+                let day = Math.floor(mins / 86400000);
+                let hours = Math.floor((mins % 86400000) / 3600000);
+                let min = Math.floor((mins % 3600000) / 60000);
+                let s = Math.floor((mins % 60000) / 1000);
+                document.body.innerHTML = "<h3>距离目标时间还有: " + day + "天" + hours + "小时" + min + "分钟" + s + "秒</h3>"
+            } else {
+
+                let day = Math.floor(mins / 86400000);
+                let hours = Math.floor((mins % 86400000) / 3600000);
+                let min = Math.floor((mins % 3600000) / 60000);
+                let s = Math.floor((mins % 60000) / 1000);
+                document.body.innerHTML = "<h3>距离目标时间已经过去: " + Math.abs(day + 1) + "天" + Math.abs(hours + 1) + "小时" + Math.abs(min + 1) + "分钟" + Math.abs(s) + "秒</h3>"
+            }
+
+
+        }, 1000);
+
+
+        // setInterval(time(timeSet), 1000)
+
+        function time(timeSet) {
+
+        }
+
+
+        //             document.body.innerHTML = "<h3>距离目标时间还有: " + day + "天" + hours + "小时" + min + "分钟" + s + "秒</h3>"
+
+
+    </script>
+</body>
+
+</html>

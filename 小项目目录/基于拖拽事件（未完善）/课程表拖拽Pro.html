@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽课程表</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: calc(100% - 40px);
+            max-width: 1000px;
+            margin: auto;
+            border: 1px solid #000;
+        }
+
+        .course-list,
+        .schedule {
+            margin: 10px;
+            vertical-align: top;
+        }
+
+        .course {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            cursor: move;
+            background-color: #f0f0f0;
+            /* Default color */
+        }
+
+        /* Additional colors for courses */
+        .math {
+            background-color: #f0f0f0;
+        }
+
+        .english {
+            background-color: #ffcccc;
+        }
+
+        .medicine {
+            background-color: #ccffcc;
+        }
+
+        .moral {
+            background-color: #ccccff;
+        }
+
+        .science {
+            background-color: #fff4e6;
+        }
+
+        .software {
+            background-color: #ffe6cc;
+        }
+
+        .physical {
+            background-color: #c2c2f0;
+        }
+
+        .history {
+            background-color: #e0e0e0;
+        }
+
+        .schedule table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule th,
+        .schedule td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .time-slot {
+            background-color: #e8e8e8;
+            position: relative;
+        }
+
+        tr .time {
+            padding: 0;
+            background-color: #ddd;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 650px) {
+            .box {
+                flex-direction: column;
+            }
+
+            .schedule th,
+            .schedule td {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="scheduleBox">
+        <div id="course-list" class="course-list"></div>
+        <div id="schedule" class="schedule">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5">时间</th>
+                        <th>周一</th>
+                        <th>周二</th>
+                        <th>周三</th>
+                        <th>周四</th>
+                        <th>周五</th>
+                        <th>周五</th>
+                        <th>周五</th>
+                        <!-- <th>周五</th>
+                        <th>周五</th>
+                        <th>周五</th>
+                        <th>周五</th>
+                        <th>周五</th> -->
+
+                        <!-- <th>周六</th>
+            <th>周日</th> -->
+                    </tr>
+                </thead>
+                <tbody id="scheduleBody">
+                    <!-- 时间槽将在这里动态生成 -->
+                </tbody>
+            </table>
+
+            <input class="tianjia" type="text"><button class="queren">添加</button>
+            <button class="qingchu">清除所有</button>
+
+            <select name="" id="zhiye">
+                <option value="0">素问</option>
+                <option value="1">玄机</option>
+
+                <option value="2">铁衣</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <script>
+        let inp = document.querySelector('.tianjia')
+        let btn = document.querySelector('.queren')
+        let zhiyue = document.querySelector('#zhiye')
+
+        let qingchubtn = document.querySelector('.qingchu')
+        let zhiyenum = 0
+
+        let table = document.querySelector('#scheduleBody')
+
+
+
+
+        qingchubtn.onclick = function () {
+
+            let st = []
+            localStorage.setItem('courses', JSON.stringify(st))
+
+            const courseList = document.getElementById('course-list');
+            courses = [];
+            courseList.innerHTML = '';
+
+
+        }
+
+
+
+
+        table.addEventListener('click', function (e) {
+
+            if (e.target.tagName === 'TD') {
+                let td = e.target
+                td.style.backgroundColor = '#e8e8e8'
+                td.innerHTML = ''
+                console.log(td);
+
+            }
+
+            saveScheduleState()
+        })
+
+
+
+
+
+        // 定义课程数据
+        let courses = [
+
+        ];
+
+        // window.addEventListener('load', function () {
+        //     let sse = localStorage.getItem('courses')
+        //     courses = JSON.parse(sse)
+        //     generateCourseList()
+        // });
+
+        zhiye.oninput = function () {
+
+            zhiyenum = Number(this.value)
+
+            console.log(zhiyenum);
+
+        }
+
+
+        btn.onclick = function () {
+            let val = inp.value
+            let color = ''
+            let type = ''
+            switch (zhiyenum) {
+                case 0:
+                    color = '#ffcccc'
+                    type = '素问'
+                    break;
+                case 1:
+                    color = '#ccffcc'
+                    type = '玄机'
+
+                    break;
+                case 2:
+                    color = '#ccccff'
+                    type = '铁衣'
+
+                    break;
+                case 3:
+                    color = '#ffccff'
+                    type = '素问'
+
+                    break;
+                case 4:
+                    color = '#ccffff'
+                    type = '素问'
+
+                    break;
+                case 5:
+                    color = '#ffffcc'
+                    type = '素问'
+
+                    break;
+
+                default:
+                    break;
+            }
+
+
+            let ssr = {
+                'name': val,
+                'type': type,
+                'color': color
+            }
+
+            console.log(ssr);
+
+            localStorage.setItem('courses', JSON.stringify(courses))
+
+            courses.push(ssr)
+            console.log('SHUZU', courses);
+
+
+            inp.value = ''
+
+            generateCourseList()
+            localStorage.setItem('courses', JSON.stringify(courses))
+
+        }
+
+
+        // 生成课程列表
+        function generateCourseList() {
+            console.log('生成');
+
+            const courseList = document.getElementById('course-list');
+
+            courseList.innerHTML = '';
+
+            courses.forEach(course => {
+                const courseElement = document.createElement('div');
+                courseElement.textContent = course.name;
+                courseElement.className = `course ${course.type}`;
+                courseElement.style.backgroundColor = course.color;
+                courseElement.draggable = true;
+                courseElement.addEventListener('dragstart', handleDragStart);
+                courseList.appendChild(courseElement);
+            });
+
+
+        }
+
+        // 初始化时间槽
+        function initializeTimeSlots() {
+            const scheduleBody = document.getElementById('scheduleBody');
+            const timeSlots = [
+                { period: ' ', time: ' ' },
+                { period: ' ', time: ' ' },
+                { period: ' ', time: ' ' },
+                { period: ' ', time: ' ' },
+                // 添加更多时间段...
+                { period: ' ', time: ' ' },
+                { period: ' ', time: ' ' },
+
+
+            ];
+
+            timeSlots.forEach((slot, index) => {
+                const row = document.createElement('tr');
+                const timeCell = document.createElement('td');
+                // timeCell.textContent = `${slot.period} ${slot.time}`;
+                // row.appendChild(timeCell);
+
+                let trr = document.querySelectorAll('th')
+                console.log(trr);
+
+
+                for (let j = 1; j <= trr.length + 4; j++) { // 假设一周5天
+                    const cell = document.createElement('td');
+                    cell.className = 'time-slot';
+                    cell.addEventListener('dragstart', handleDragStart);
+                    cell.draggable = true;
+                    cell.addEventListener('dragover', handleDragOver);
+                    cell.addEventListener('drop', handleDrop);
+                    row.appendChild(cell);
+                }
+
+                scheduleBody.appendChild(row);
+
+
+
+            });
+
+
+        }
+
+        // 保存课程表状态到会话存储
+        function saveScheduleState() {
+            const scheduleState = [];
+            const rows = document.getElementById('scheduleBody').rows;
+            for (let i = 0; i < rows.length - 1; i++) { // 排除休息时间行
+                const cells = rows[i].cells;
+                const rowState = [];
+                for (let j = 1; j < cells.length; j++) { // 从第二个单元格开始（第一个是时间段）
+                    rowState.push(cells[j].textContent);
+                }
+                scheduleState.push(rowState);
+            }
+            localStorage.setItem('scheduleState', JSON.stringify(scheduleState));
+        }
+
+        // 恢复课程表状态从会话存储
+        function restoreScheduleState() {
+
+            const savedState = localStorage.getItem('scheduleState');
+
+            if (savedState) {
+                const scheduleState = JSON.parse(savedState);
+                const rows = document.getElementById('scheduleBody').rows;
+                scheduleState.forEach((rowState, rowIndex) => {
+                    rowState.forEach((cellState, cellIndex) => {
+                        if (cellState) {
+                            const cell = rows[rowIndex].cells[cellIndex +1]; // 加1跳过时间段单元格
+                            cell.textContent = cellState;
+                            const course = courses.find(c => c.name === cellState);
+                            if (course) {
+
+                                cell.style.backgroundColor = course.color;
+                            }
+                        }
+                    });
+                });
+            }
+        }
+
+        // 拖动开始处理
+        function handleDragStart(e) {
+            const course = courses.find(c => c.name === e.target.textContent);
+            e.dataTransfer.setData('text/plain', JSON.stringify(course));
+        }
+
+        // 拖动覆盖处理
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        // 拖动放置处理，允许覆盖旧课程，并设置颜色
+        function handleDrop(e) {
+            e.preventDefault();
+            const courseData = JSON.parse(e.dataTransfer.getData('text/plain'));
+            const cell = e.target;
+            cell.textContent = courseData.name;
+            cell.style.backgroundColor = courseData.color;
+            cell.classList.remove('time-slot');
+            saveScheduleState();
+        }
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log(courses);
+            let sse = localStorage.getItem('courses')
+            courses = JSON.parse(sse)
+            generateCourseList();
+            initializeTimeSlots();
+            restoreScheduleState();
+        });
+    </script>
+    ``
+
+</body>
+
+</html>

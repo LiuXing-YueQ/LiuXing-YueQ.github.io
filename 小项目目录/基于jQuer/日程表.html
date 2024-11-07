@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jq/jQuery.min.js"></script>
+    <style>
+        .box1,
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: #fdca3d;
+            margin: 10px;
+            border: 1px solid red;
+            padding: 0;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+
+        .fad {
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .inp {
+            width: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        li {
+            width: 140px;
+            height: 25px;
+            font-size: 12px;
+            text-align: center;
+            background-color: rgb(96, 4, 255);
+            color: aliceblue;
+            list-style: none;
+            margin: 0;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="inp">
+
+
+    <div class="fad">
+        <ul class="box1">
+
+        </ul>
+        <ul class="box2">
+
+        </ul>
+    </div>
+
+
+
+    <script>
+
+        let color = 0
+        let color2 = 0
+        let color3 = 0
+        
+        $('.inp').on('keydown', function (event) {
+            if (event.keyCode == 13 && $('.inp').val()) {
+                // console.log($('.inp').val());
+                
+                let li = $(`<li>${$('.inp').val()}</li>`)
+
+                
+                    color = Math.floor(Math.random() * 255)
+                    color2 = Math.floor(Math.random() * 255)
+                    color3 = Math.floor(Math.random() * 255)
+               
+
+                li.css({
+                    "position": 'relative',
+                    "line-height": "25px",
+                    'backgroundColor': `rgb(${color}, ${color2},${color3})`
+                })
+
+
+                li.click(function () {
+                    let X = $('<div>X</div>')
+                    color = Math.floor(Math.random() * 255)
+                    color2 = Math.floor(Math.random() * 255)
+                    color3 = Math.floor(Math.random() * 255)
+               
+                    X.css({
+                        "width": "25px",
+                        "height": "25px",
+                        'backgroundColor': `rgb(${color}, ${color2},${color3})`,
+                        'position': 'absolute',
+                        'right': '0',
+                        'top': '0',
+                        "line-height": "25px"
+
+                    })
+
+                    X.click(function () {
+                        $(this).parent().remove()
+                    })
+
+                    let d = true
+                    if (d) {
+                        $('.box2').append($(this))
+                        $(this).append(X)
+                        d = false
+                    }
+
+
+                    // $('.box1').remove($(this))
+
+                })
+
+                $('.box1').append(li)
+
+                $('.inp').val('')
+
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

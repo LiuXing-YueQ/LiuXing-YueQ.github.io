@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .orgin {
+            width: 150px;
+            height: 150px;
+            float: left;
+
+        }
+
+        .orgin img {
+            width: 100%;
+        }
+
+        ul.stage {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            width: 300px;
+            height: 300px;
+            background-color: rgb(240, 240, 240);
+
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            padding: 10px;
+
+            position: relative;
+            float: left;
+            border: 2px solid;
+
+        }
+
+        ul.stage li {
+            width: 96px;
+            height: 96px;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 1px;
+            transition: all 0.3s;
+            /* border-radius: 5px; */
+
+        }
+
+        ul.stage li.active {
+            opacity: 0.5;
+        }
+
+        ul.stage li img {
+            width: 300%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="stage">
+        <li style="height: 100%;
+        width: 100%;"><img src="./img/banner1.jpg" alt="" style="width: 100%; height: 100%;" /></li>
+
+    </ul>
+
+    <div class="orgin">
+        <img src="./img/banner1.jpg" alt="" />
+    </div>
+
+
+    <select class="beishu">
+
+        <option value="80" selected>超简单！傻子都能玩</option>
+
+        <option value="3" selected>3*3</option>
+        <option value="4">4*4</option>
+        <option value="5">5*5</option>
+        <option value="10">10*10</option>
+        <option value="2">超困难！慎入！！！！</option>
+
+
+    </select>
+    <button>开始</button>
+
+    <button class="randons">换一张</button>
+    
+    
+
+    <script>
+        let imgss = {
+            '0': "./img/banner1.jpg",
+            '1': "./img/banner2.jpg",
+            '2': "./img/banner3.jpg",
+            '3': "./img/banner4.jpg"
+        }
+        let beilv = 3
+        var stage = document.querySelector(".stage");
+
+        var lis = stage.querySelectorAll("li");
+
+        let btn = document.querySelector('button')
+        let beishu = document.querySelector('select')
+
+        // 随机换图按钮
+        let mini = document.querySelector('.orgin>img')
+        let randons = document.querySelector('.randons')
+        let dizhi = "./img/banner1.jpg"
+
+
+        let sr
+        // 换一张
+        randons.onclick = function () {
+            let dr
+            dr = sr
+            sr = Math.floor(Math.random() * 4)
+
+            // console.log(dr,sr);
+
+            while (dr == sr) {
+                sr = Math.floor(Math.random() * 4)
+                console.log(1111);
+
+            }
+
+
+            dizhi = imgss[sr]
+            btn.onclick()
+            mini.src = dizhi
+
+            console.log(dizhi);
+
+
+
+        }
+
+
+
+
+
+
+        // 选择倍率
+        beishu.onchange = function () {
+            beilv = this.value
+            console.log('当前为', beilv);
+
+        }
+
+
+
+
+
+
+
+
+        var arr = [];
+
+        let Clickcd = true
+
+        btn.onclick = function () {
+
+
+            // if (Clickcd) {
+            // Clickcd = false
+            // 删除所有子节点
+            for (let ssss = 0; ssss < lis.length; ssss++) {
+
+                stage.removeChild(stage.children[0])
+
+            }
+            arr = []
+
+
+
+
+            for (var i = 0; i < beilv * beilv; i++) {
+                arr.push(i);
+                // console.log(arr);
+
+            }
+            arr.sort(() => Math.random() - 0.5);
+
+
+            for (let ssss = 0; ssss < beilv * beilv; ssss++) {
+
+                let li = document.createElement('li')
+                // console.log("lis", lis)
+
+                li.dataset.o = ssss;
+                li.dataset.c = arr[ssss];
+
+                li.style.width = (300 / beilv - 2) + 'px'
+                li.style.height = (300 / beilv - 2) + 'px'
+
+                li.style.top = Math.floor(li.dataset.c / beilv) * (300 / beilv) + 10 + "px";
+                li.style.left = (li.dataset.c % beilv) * (300 / beilv) + 10 + "px";
+
+
+                let img = document.createElement('img')
+                img.src = dizhi
+                img.style.width = beilv * 100 + '%'
+                img.style.top = Math.floor(ssss / beilv) * -(300 / beilv - 2) + "px";
+                img.style.left = (ssss % beilv) * -(300 / beilv - 2) + "px";
+
+                li.appendChild(img)
+
+                stage.appendChild(li)
+
+            }
+
+
+
+            lis = stage.querySelectorAll("li");
+
+            // } else {
+            // alert('游戏未结束,需要换难度请按F5')
+            // }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+        // 设置一个数组用于检测是否点击两次
+        var clickedLis = [];
+
+        // 使用时间委托，检测ul内的子元素被点击的情况
+        stage.onclick = function (event) {
+            // 获取被点击（选中的）子元素
+            var target = event.target;
+            //限制只能点击到IMG标签
+            if (target.tagName == "IMG") {
+                target = target.parentNode;
+            }
+            // console.log(target);
+            // 如果是li就...
+            if (target.tagName === "LI") {
+                // 获取当前的 位置序号
+                // console.log(target.dataset.c);
+                clickedLis.push(target);
+                target.classList.add("active");
+
+                // 判断长度是2两个交换
+                if (clickedLis.length === 2) {
+                    setTimeout(() => {
+                        // 交换data-c
+                        var tmp = clickedLis[0].dataset.c;
+                        clickedLis[0].dataset.c = clickedLis[1].dataset.c;
+                        clickedLis[1].dataset.c = tmp;
+
+                        // 重新计算交换完成的li的位置
+                        clickedLis.forEach((li) => {
+                            li.style.top = Math.floor(li.dataset.c / beilv) * (300 / beilv) + 10 + "px";
+                            li.style.left = (li.dataset.c % beilv) * (300 / beilv) + 10 + "px";
+                        });
+
+                        var isFinished = Array.prototype.slice.call(lis).every((li) => {
+                            // console.log(lis);
+
+                            return li.dataset.o == li.dataset.c;
+                        });
+
+
+                        setTimeout(function () {
+
+                            // 如果完成就提示
+                            if (isFinished) {
+                                Clickcd = true
+                                alert("恭喜你！拼图成功！");
+
+                            }
+
+                        }, 300)
+
+
+
+                        // debugger;
+                        // 交换完成之后清除数组
+                        clickedLis[0].classList.remove("active");
+                        clickedLis[1].classList.remove("active");
+                        clickedLis = [];
+
+                    }, 300);
+                }
+            }
+        };
+    </script>
+
+
+    <!-- 作业:加上难度选择 6*6 9*9 -->
+</body>
+
+</html>

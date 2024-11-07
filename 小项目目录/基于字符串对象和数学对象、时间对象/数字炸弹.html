@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 主程序入口
+
+
+        mains()
+
+        function mains() {
+            let nu1 = 1
+            let nu2 = 100
+            let ran = Math.floor(Math.random() * 101);
+            // alert(ran)
+            num(nu1, nu2, ran)
+        }
+
+
+        function num(num1, num2, ran) {
+
+            let nums = +prompt(`请输入${num1}到${num2}之间的值`)
+
+            if (nums == ran) {
+                alert('BOOM!')
+            } else if (nums > num1 && nums < ran) {
+                num1 = nums
+                num(num1, num2, ran)
+                return
+            }
+            else if (nums < num2 && nums > ran) {
+                num2 = nums
+                num(num1, num2, ran)
+                return
+            } else {
+                alert(`输入不合法！请输入${num1}到${num2}的值`)
+                num(num1, num2, ran)
+                return
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

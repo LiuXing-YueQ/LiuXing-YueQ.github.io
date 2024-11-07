@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 作业: 随机点名: 
+        // 根据下面所提供的名单数组，实现每次运行代码随机输出名单中两个名字
+        // 避免随机输出名单中两个名字相同
+        var nameArr = ["小明", "刘松", "张勇", "孙强", "贺北", "曹丕", "赵维富"]
+
+
+        let str = ran(nameArr)
+        document.write(str)
+
+        function ran(arrs) {
+            let num = prompt('请输入要抽取的人数')
+            let newarrs = arrs.filter(function (item, index) {
+                return true
+            })
+            let str = []
+
+            if (num > newarrs.length) {
+                alert(`超出名单长度！当前名单上有${newarrs.length}人，请重新输入`)
+                return ran(arrs)
+            }
+            console.log('原数组为', newarrs);
+
+            for (let i = 0; i < num; i++) {
+
+                str.push(caiqie(newarrs))
+                console.log(newarrs);
+
+            }
+
+            return str.join(",")
+
+            // ran1 = newarrs.length
+            // down1 = Math.floor(Math.random() * ran1)
+
+
+        }
+
+
+        function caiqie(narr) {
+            console.log("数组为=>", narr);
+
+            let ran1 = narr.length
+            console.log("长度为为=>", narr.length);
+
+            let down1 = Math.floor(Math.random() * ran1)
+            return narr.splice(down1, 1)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .htmls {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+
+
+        .box1 {
+            /* margin: 0 auto; */
+            width: 300px;
+            height: 300px;
+            background: url(./img/banner1.jpg) center center no-repeat;
+            background-size: 100% 100%;
+
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .box1 .mov {
+            width: calc(300px/4);
+            height: calc(300px/4);
+            background-color: aquamarine;
+            opacity: 0.5;
+            position: absolute;
+            /* top: 0;
+            left: 0; */
+            display: none;
+        }
+
+        input {
+            width: 300px;
+        }
+
+        .labb input {
+
+            width: 30px;
+
+        }
+
+        .bigBox {
+            /* margin: 0 auto; */
+            width: 300px;
+            height: 300px;
+            /* background: url(./img/banner1.jpg) center center no-repeat; */
+            /* background-size: cover; */
+            /* background-size: 900px 900px; */
+            overflow: hidden;
+
+            position: absolute;
+            right: -320px;
+            top: 0;
+            position: relative;
+            background-color: aqua;
+
+            display: none;
+        }
+
+        .bigBox img {
+            width: 400%;
+            height: 400%;
+            position: absolute;
+            top: -300px;
+            left: -300px;
+        }
+
+
+        /* 图片盒子 */
+        .imgbox {
+            width: 300px;
+            height: 80px;
+            /* background-color: bisque; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .imgbox img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="htmls">
+        <div class="box1">
+            <div class="mov">
+
+            </div>
+            <div class="bigBox">
+                <img src="./img/banner1.jpg" class="box2"></img>
+            </div>
+        </div>
+        <!-- <p>2倍</p> -->
+        <!-- <input type="range" value="2" min='2' max='6'> -->
+
+        <div class="labb">
+            <label><input type="radio" name="XX" value="2">2倍</label>
+            <label><input type="radio" name="XX" value="4">4倍</label>
+            <label><input type="radio" name="XX" value="6">6倍</label>
+        </div>
+
+        <div class="imgbox">
+            <img src="./img/banner1.jpg" alt="">
+            <img src="./img/banner2.jpg" alt="">
+            <img src="./img/banner3.jpg" alt="">
+            <img src="./img/banner4.jpg" alt="">
+            <img src="./img/banner5.jpg" alt="">
+
+        </div>
+
+
+        <!-- <select name="" id="">
+            <option value="1">图1</option>
+            <option value="2" selected>图2</option>
+            <option value="3">图3</option>
+            <option value="4">图4</option>
+            <option value="5">图5</option>
+
+        </select> -->
+
+    </div>
+
+
+
+
+
+    <script>
+        let box = document.querySelector('.box1')
+        let box2 = document.querySelector('img')
+        let big = document.querySelector('.bigBox')
+
+        let mov = document.querySelector('.mov')
+        // 获取倍数
+        let fold = document.querySelectorAll('input[type="radio"]')
+
+        // 获取显示倍率标签
+        let lab = document.querySelector('p')
+
+        console.log(fold);
+
+
+
+
+
+        // 设置倍率变动时同步更新页面
+        // fold.onchange = function () {
+
+        let folts = 2
+        for (let res = 0; res < fold.length; res++) {
+            fold[res].onclick = function () {
+                // console.log(fold[res].checked);
+                for (let is = 0; is < fold.length; is++) {
+                    fold[is].onclick = function () {
+                        folts = Number(fold[is].value)
+                        console.log(folts);
+
+                    }
+                }
+            }
+
+
+            // if (fold[res].checked) {
+            //     console.log('选中', fold[res].value);
+
+            // }
+
+        }
+
+        // }
+
+
+        console.log(box2.src);
+
+
+        //鼠标进入显示放大镜
+        box.onmouseover = function () {
+            big.style.display = 'block'
+            mov.style.display = 'block'
+
+        }
+
+        // 鼠标离开放大镜消失
+        box.onmouseout = function () {
+            big.style.display = 'none'
+            mov.style.display = 'none'
+
+        }
+
+
+
+        box.onmousemove = function (event) {
+            // 获取鼠标位置
+            var x = event.clientX - box.offsetLeft;
+            var y = event.clientY - box.offsetTop;
+
+
+            // console.log('Mouse position: ' + x + ', ' + y);
+            // box2.style.backgroundSize = 400+'px'
+
+
+            mov.style.width = 300 / folts + 'px'
+            mov.style.height = 300 / folts + 'px'
+
+
+            // 设置鼠标指针区域倍率
+            movX = x - 300 / (2 * folts)
+            movY = y - 300 / (2 * folts)
+
+            // 设置缩放图大小
+            box2.style.width = folts * 100 + '%'
+            box2.style.height = folts * 100 + '%'
+
+            // 限制缩放出界
+            if (movX < 0) {
+                movX = 0
+            }
+            //          box的元素宽度   -    遮罩层
+            if (movX > box.offsetWidth - mov.offsetWidth) {
+                movX = box.offsetWidth - mov.offsetWidth
+            }
+
+            if (movY < 0) {
+                movY = 0
+            }
+
+            if (movY > box.offsetHeight - mov.offsetHeight) {
+                movY = box.offsetHeight - mov.offsetHeight
+            }
+
+
+
+
+            // 同步鼠标指向
+            mov.style.left = movX + 'px'
+            mov.style.top = movY + 'px'
+
+
+            box2.style.left = -movX * folts + 'px';
+            box2.style.top = -movY * folts + 'px';
+
+
+
+        }
+
+
+
+        // // 选图
+        let imgs = document.querySelectorAll('.imgbox img')
+        console.log(imgs);
+
+        for (let dds = 0; dds < imgs.length; dds++) {
+            imgs[dds].onclick = function () {
+                box.style.background = `url(./img/banner${dds + 1}.jpg) center center no-repeat`
+                box.style.backgroundSize = '100% 100%'
+
+
+
+                box2.src = `./img/banner${dds + 1}.jpg`
+
+            }
+        }
+
+
+        // // 当选框发生改变时更改值
+        // imgs.onchange = function () {
+
+        //     box.style.background = `url(./img/banner${imgs.value}.jpg) center center no-repeat`
+        //     box.style.backgroundSize = '100% 100%'
+
+
+
+        //     box2.src = `./img/banner${imgs.value}.jpg`
+
+        //     // console.log(box2.src);
+
+        // }
+
+        // console.log(box.style);
+
+    </script>
+</body>
+
+</html>

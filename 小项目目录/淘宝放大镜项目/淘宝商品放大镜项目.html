@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .htmls {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+
+
+        .box1 {
+            /* margin: 0 auto; */
+            width: 300px;
+            height: 300px;
+            background: url(./img/banner1.jpg) center center no-repeat;
+            background-size: 100% 100%;
+
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .box1 .mov {
+            width: calc(300px/4);
+            height: calc(300px/4);
+            background-color: aquamarine;
+            opacity: 0.5;
+            position: absolute;
+            /* top: 0;
+            left: 0; */
+            display: none;
+        }
+
+        input {
+            width: 300px;
+        }
+
+
+        .bigBox {
+            /* margin: 0 auto; */
+            width: 300px;
+            height: 300px;
+            /* background: url(./img/banner1.jpg) center center no-repeat; */
+            /* background-size: cover; */
+            /* background-size: 900px 900px; */
+            overflow: hidden;
+
+            position: absolute;
+            right: -320px;
+            top: 0;
+            position: relative;
+            background-color: aqua;
+
+            display: none;
+        }
+
+        .bigBox img {
+            width: 400%;
+            height: 400%;
+            position: absolute;
+            top: -300px;
+            left: -300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="htmls">
+        <div class="box1">
+            <div class="mov">
+
+            </div>
+            <div class="bigBox">
+                <img src="./img/banner1.jpg" class="box2"></img>
+            </div>
+        </div>
+        <p>2倍</p>
+        <input type="range" value="2" min='2' max='6'>
+
+        <select name="" id="">
+            <option value="1">图1</option>
+            <option value="2" selected>图2</option>
+            <option value="3">图3</option>
+            <option value="4">图4</option>
+            <option value="5">图5</option>
+
+        </select>
+
+    </div>
+
+
+
+
+
+    <script>
+        //  获取商品图（背景）的盒子
+        let box = document.querySelector('.box1')
+        //  获取放大镜区域的图片标签
+        let box2 = document.querySelector('img')
+        // 获取放大镜区域的大盒的标签
+        let big = document.querySelector('.bigBox')
+        // 获取遮罩层
+        let mov = document.querySelector('.mov')
+
+        // 获取设置的倍数
+        let fold = document.querySelector('input[type="range"]')
+
+        // 获取显示倍率标签
+        let lab = document.querySelector('p')
+
+
+        // 设置倍率变动时同步更新页面
+        fold.onchange = function () {
+            lab.innerText = fold.value + '倍'
+
+        }
+
+
+        console.log(box2.src);
+
+
+        //鼠标进入显示放大镜
+        box.onmouseover = function () {
+            big.style.display = 'block'
+            mov.style.display = 'block'
+
+        }
+
+        // 鼠标离开放大镜消失
+        box.onmouseout = function () {
+            big.style.display = 'none'
+            mov.style.display = 'none'
+
+        }
+
+
+        // 鼠标在元素内只要移动就会触发的方法
+        box.onmousemove = function (event) {
+            // 获取鼠标位置
+            var x = event.clientX - box.offsetLeft;
+            var y = event.clientY - box.offsetTop;
+
+            // 同步设置遮罩层的大小以计算遮罩层的边界
+            mov.style.width = 300 / fold.value + 'px'
+            mov.style.height = 300 / fold.value + 'px'
+
+
+            // 设置鼠标指针计算完倍率的值
+            movX = x - 300 / (2 * fold.value)
+            movY = y - 300 / (2 * fold.value)
+
+            // 设置放大镜区域缩放图的大小
+            box2.style.width = fold.value * 100 + '%'
+            box2.style.height = fold.value * 100 + '%'
+
+            // 限制缩放出界
+            if (movX < 0) {
+                movX = 0
+            }
+            //          box的元素宽度   -    遮罩层高度
+            if (movX > box.offsetWidth - mov.offsetWidth) {
+                movX = box.offsetWidth - mov.offsetWidth
+            }
+
+            if (movY < 0) {
+                movY = 0
+            }
+            //          box的元素高度   -    遮罩层的高度
+            if (movY > box.offsetHeight - mov.offsetHeight) {
+                movY = box.offsetHeight - mov.offsetHeight
+            }
+
+
+
+
+            // 遮罩层同步鼠标指向
+            mov.style.left = movX + 'px'
+            mov.style.top = movY + 'px'
+
+
+            // 同步放大镜区域图片显示的位置
+            box2.style.left = -movX * fold.value + 'px';
+            box2.style.top = -movY * fold.value + 'px';
+
+
+        }
+
+
+
+        // 选图
+        let imgs = document.querySelector('select')
+
+
+        // 当选框发生改变时更改值
+        imgs.onchange = function () {
+
+            box.style.background = `url(./img/banner${imgs.value}.jpg) center center no-repeat`
+            box.style.backgroundSize = '100% 100%'
+
+
+
+            box2.src = `./img/banner${imgs.value}.jpg`
+
+            // console.log(box2.src);
+
+        }
+
+        console.log(box.style);
+
+    </script>
+</body>
+
+</html>

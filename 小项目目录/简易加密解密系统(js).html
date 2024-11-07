@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        // 主进程
+        mains()
+
+
+        // 主界面流程
+        function mains() {
+            let str = prompt('欢迎使用Unicode编解码器\n请输入序号或者文字选择需要的操作：\n(1)高级字符加密\n(2)顶尖破解算法解密')
+
+            switch (str) {
+                case '1':
+                    jiemi()
+                    return
+                    break;
+                case '2':
+                    uinCode()
+                    return
+                    break;
+                case '高级字符加密':
+                    jiemi()
+                    break;
+                case '顶尖破解算法解密':
+                    uinCode()
+                    break;
+                case null:
+                    if (confirm('确定要退出系统吗？')) {
+                        alert('系统已退出！F5可重新打开！欢迎下次使用！')
+                        return
+                    } else {
+                        mains()
+                        return
+                    }
+                    break;
+                case '':
+                    alert('输入框空荡荡的，人家会感到空虚的噢~')
+                    mains()
+                    return
+                    break;
+                case '水印':
+                alert('本程序由广工商—H5刘星宙倾情编写！')
+                    mains()
+                    return
+                    break;
+                default:
+                    alert(str)
+                    alert('输入不合法，请重试！')
+                    mains()
+                    return
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+
+
+        // 加密方法
+        function jiemi() {
+            var text = prompt("请输入需要加密的内容");
+            if (text == null) {
+                mains()
+                return
+            }
+            // 1. 切割成数组
+            var arr = text.split("");
+            // 2. 遍历arr, 拿到每一项
+            arr = arr.map(function (item) {
+                // console.log(item); // 数组的每一项, 字符串
+
+                // 把每一项转成unicode编码
+                var code = item.charCodeAt();
+
+                // code不足五位的编码, 用0补够五位
+                if (String(code).length != 5) {
+                    code = "0".repeat(5 - String(code).length) + code;
+                }
+                return code; // unicode编码 映射 原来的字符串
+            })
+            // 反转数组(数字没变), 把数组连接成字符串
+            var password = arr.reverse().join("");
+            alert(password);
+            // if (confirm(password)){
+            //     navigator.clipboard.writeText(password)
+            // }else{
+            //     navigator.clipboard.writeText(password)
+            // }
+
+            mains()
+            return
+        }
+
+
+
+        // uinCode()
+        // 解码部分
+        function uinCode() {
+
+            let ntr = prompt('请输入要解码的密码')
+            if (ntr == null) {
+                mains()
+                return
+            }
+
+
+            let uni = []
+
+            for (let i = 0; i < ntr.length; i += 5) {
+
+                uni.unshift(String.fromCharCode(ntr.substr(i, 5)))
+
+            }
+
+            alert(uni.join(''))
+
+            mains()
+            return
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
