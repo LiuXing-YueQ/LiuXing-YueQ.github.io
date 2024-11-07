@@ -1,0 +1,27 @@
+.body {
+  background-color: #020617;
+}
+.body .index ul {
+  margin: 0;
+}
+.body .index ul li {
+  list-style: none;
+  margin: 0;
+}
+.body .index ul li a {
+  /* 移除下划线 */
+  text-decoration: none;
+  /* 移除默认的颜色 */
+  color: inherit;
+  /* 移除点击时的焦点轮廓 */
+  outline: none;
+  /* 移除鼠标悬停时的样式变化 */
+}
+.body .index ul li a:hover,
+.body .index ul li a:focus,
+.body .index ul li a:active {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+/*# sourceMappingURL=./index.css.map */
