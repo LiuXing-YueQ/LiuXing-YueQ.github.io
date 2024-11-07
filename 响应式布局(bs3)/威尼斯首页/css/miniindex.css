@@ -1,0 +1,199 @@
+/* .Topbox {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+} */
+.Topbox .Top {
+  height: 105px;
+  background-color: #080e37;
+  display: flex;
+  align-items: center;
+}
+.Topbox .Top .m-lan {
+  font-weight: 700;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  height: 70px;
+  color: white;
+}
+.Topbox .Top .m-lan .m-xz {
+  color: #e52029;
+}
+.Topbox .Top .m-lan:nth-of-type(2) {
+  display: flex;
+  justify-content: flex-start;
+  height: 70px;
+}
+.Topbox .Top .m-lan:nth-of-type(3) {
+  height: 70px;
+}
+.Topbox .Top .m-lan:nth-of-type(3) div:hover {
+  cursor: pointer;
+  transition: all 0.5s;
+  color: #e52029;
+}
+.Topbox .Top .m-lan:nth-of-type(4) .m-sp {
+  font-size: 20px;
+  color: #000000;
+  margin: 0 10px;
+}
+.Topbox .Top .m-lan:nth-of-type(4) .m-sp:hover {
+  cursor: pointer;
+  transition: all 0.5s;
+  color: #e52029;
+}
+.m-cebianlanLeft {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #9cd1ff;
+  height: 100vh;
+  z-index: 100;
+  transition: all 0.5s;
+  transform: translateX(-100vw);
+}
+.m-cebianlanLeft .guanleft {
+  width: 50vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  transform: translateX(50vw);
+}
+.m-cebianlanRight {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #ffce9c;
+  height: 100vh;
+  z-index: 100;
+  transition: all 0.5s;
+  transform: translateX(100vw);
+}
+.m-cebianlanRight .guanright {
+  width: 50vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  transform: translateX(-50vw);
+}
+.donhua {
+  transform: translateX(0vw);
+}
+.m-content2 {
+  display: flex;
+  align-items: center;
+}
+.m-cnt2 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.m-cnt2 .row {
+  height: 85px;
+  background-color: #e52029;
+}
+.m-san {
+  background: url('../YiLai/sucai/10054.jpg');
+}
+.m-san .boxbackground .box {
+  height: 448px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  color: white;
+}
+.m-san .boxbackground .box h3 {
+  font-weight: 700;
+}
+.m-san .boxbackground .box span {
+  margin: 10px 0;
+  color: #89e62d;
+  font-size: 60px;
+}
+@media screen and (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 0px) {
+  .m-cnt2 {
+    height: 227px;
+    justify-content: flex-start;
+  }
+  .m-ctnimg {
+    justify-content: flex-end;
+  }
+  .m-ctnimg img {
+    width: 40%;
+    height: auto;
+  }
+  .m-san .boxbackground .box {
+    height: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .m-cebianlanLeft {
+    width: 50vw;
+  }
+  .m-cebianlanRight {
+    width: 50vw;
+  }
+  .m-cnt2 {
+    height: auto;
+    justify-content: flex-start;
+  }
+  .m-ctnimg {
+    justify-content: flex-end;
+  }
+  .m-ctnimg img {
+    width: 50%;
+    height: auto;
+  }
+  .m-san .boxbackground .box {
+    height: auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .m-cebianlanLeft {
+    width: 0vw;
+  }
+  .m-cebianlanRight {
+    width: 30vw;
+  }
+  .m-cnt2 {
+    height: 560px;
+    justify-content: center;
+  }
+  .m-ctnimg {
+    justify-content: center;
+  }
+  .m-ctnimg img {
+    width: 80%;
+    height: auto;
+  }
+  .m-san .boxbackground .box {
+    height: auto;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .m-cebianlanLeft {
+    width: 0vw;
+  }
+  .m-cebianlanRight {
+    width: 20vw;
+  }
+  .m-cnt2 {
+    height: 560px;
+    justify-content: center;
+  }
+  .m-ctnimg {
+    justify-content: center;
+  }
+  .m-ctnimg img {
+    width: 100%;
+    height: auto;
+  }
+  .m-san .boxbackground .box {
+    height: 448px;
+  }
+}
+/*# sourceMappingURL=./index.css.map */

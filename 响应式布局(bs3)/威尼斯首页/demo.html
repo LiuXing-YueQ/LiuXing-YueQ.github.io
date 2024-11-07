@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slide Up and Slide Down Example</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <script src="./js/jQuery.min.js"></script>
+    <style>
+        #content-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>jQuery Slide Up and Slide Down</h1> -->
+    <div id="content-box">
+        <p>这是一些内容，当你点击按钮时，这个盒子会滑动隐藏或者显示。</p>
+    </div>
+    <button id="toggle-button">切换内容显示/隐藏</button>
+
+    <script>
+        $(document).ready(function () {
+            // $('#content-box').slideUp()
+
+            $('#toggle-button').click(function () {
+
+                var contentBox = $('#content-box');
+
+                if (contentBox.is(':visible')) {
+
+                    contentBox.slideUp('slow', function () {
+                        console.log('内容已隐藏');
+
+                    });
+
+                } else {
+                    contentBox.slideDown('slow', function () {
+                        console.log('内容已显示');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
