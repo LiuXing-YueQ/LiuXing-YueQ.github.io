@@ -25,93 +25,168 @@ body {
         align-items: center;
 
         ul {
-            margin: 0;
-            padding: 0;
 
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
 
             li {
-                width: 600px;
-                text-align: center;
-                height: 80px;
-                // background-color: aqua;
-                list-style: none;
-                margin: 0;
-                transition: all 0.5s;
-                padding: 0 20px;
-                border-radius: 16px;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-sizing: border-box;
-
-
-                &:hover {
-                    a {
-                        font-weight: bold;
-                        background: -webkit-linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-                        -webkit-background-clip: text;
-                        color: transparent;
-                        background-clip: text;
-                        animation: gradient-text 3s ease infinite;
-                    }
-
-
-
-                    // 毛玻璃效果
-
-                    background: rgba(255, 255, 255, 0.2);
-                    backdrop-filter: blur(10px);
-                    -webkit-backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255, 255, 255, 0.18);
-                    border-radius: 16px;
-                    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-                    backdrop-filter: blur(10px);
-                }
-            }
-
-
-            a {
-                /* 移除下划线 */
-                text-decoration: none;
-                /* 移除默认的颜色 */
-                color: inherit;
-                /* 移除点击时的焦点轮廓 */
-                outline: none;
-
-                /* 移除鼠标悬停时的样式变化 */
-                &:hover,
-                &:focus,
-                &:active {
-                    text-decoration: none;
-                    color: inherit;
-                    outline: none;
-                }
+                cursor: pointer;
             }
         }
 
 
+        a {
+            /* 移除下划线 */
+            text-decoration: none;
+            /* 移除默认的颜色 */
+            color: inherit;
+            /* 移除点击时的焦点轮廓 */
+            outline: none;
 
-        // 左侧预览
+            /* 移除鼠标悬停时的样式变化 */
+            &:hover,
+            &:focus,
+            &:active {
+                text-decoration: none;
+                color: inherit;
+                outline: none;
+            }
+        }
+    }
 
 
-        // 右侧列表
-        .index-right {
-            height: 560px;
-            overflow-y: auto;
-            // 设置滚动条隐藏
-            scrollbar-width: none;
-            &::-webkit-scrollbar {
-                width: 0;
+
+    // 左侧预览
+    .index-img {
+        width: 560px;
+        height: 560px;
+
+        // 毛玻璃效果
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .imgbox {
+
+
+
+            width: 500px;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+
+            .imgbox {
+                width: 500px;
+                height: 500px;
+                border-radius: 15px;
+                overflow: hidden;
+            }
+            
+            .imgY{
+                transition: all 0.5s;
+                transform: translateY(0px);
+            }
+            img {
+                width: 500px;
+                height: 500px;
+                margin-bottom: 20px;
                 
             }
+
+        }
+    }
+
+    // 右侧列表
+    .index-right {
+
+
+
+        margin: 0;
+        padding: 0;
+
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+
+        width: 400px;
+        height: 560px;
+        overflow-y: auto;
+
+
+        // 设置滚动条隐藏
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        ul {
+            height: auto;
+            padding: 0;
+        }
+
+
+        li {
+
+            border: 1px solid transparent;
+            // width: 600px;
+            text-align: center;
+
+            // background-color: aqua;
+            list-style: none;
+            margin: 0;
+            transition: all 0.5s;
+            padding: 0 20px;
+            border-radius: 16px;
+
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            box-sizing: border-box;
+
+            h2:hover,
+            h1:hover {
+                font-weight: bold;
+                background: -webkit-linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+                -webkit-background-clip: text;
+                color: transparent;
+                background-clip: text;
+                animation: gradient-text 3s ease infinite;
+            }
+
+            h2,
+            h1 {
+                transition: all 0.5s;
+            }
+
+
+            &:hover {
+
+
+
+
+
+                // 毛玻璃效果
+
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+                // -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                // box-sizing: border-box;
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+            }
+
 
 
 
@@ -120,7 +195,47 @@ body {
 
     }
 
+    // 右侧隐藏列表
+    #XiangyinshiLi,
+    #gonnengkuaiBox {
+        display: none;
+    }
+
+
 }
+
+// 悬浮动画
+// @keyframes xuanfu {
+//     33% {
+//         transform: translate(10px, 10px);
+//     }
+
+//     66% {
+//         transform: translate(5px, -10px);
+
+//     }
+
+//     100% {
+//         transform: translate(0px, 0px);
+//     }
+
+//     66% {
+//         transform: translate(10px, 0px);
+
+//     }
+
+//     33% {
+//         transform: translate(0px, 10px);
+//     }
+
+//     0% {
+//         transform: translate(10px, 0px);
+
+//     }
+
+// }
+
+
 
 @keyframes gradient-text {
 
