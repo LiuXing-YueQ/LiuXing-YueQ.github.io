@@ -6,9 +6,41 @@
     <title>简易商品管理系统</title>
     <script src="./js/jQuery.min.js"></script>
     <style>
+        html {
+            scrollbar-width: none;
+
+
+        }
+
+        html::-webkit-scrollbar {
+            width: 0;
+        }
+
+        body {
+            background: url('../../Index/img/img5.jpg') center center no-repeat;
+            box-sizing: 100% 100%;
+
+
+            width: 100vw;
+            height: 100vh;
+            /* overflow: hidden; */
+            background-size: cover;
+            /* 覆盖整个容器 */
+            background-attachment: fixed;
+            /* 固定背景图片 */
+            background-position: center center;
+            /* 将背景图片居中显示 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         /* CSS样式 */
         .htmlbox {
             background: linear-gradient(to bottom right, #3498db, #9b59b6, #e74c3c, #f1c40f);
+
+
+
             display: flex;
             flex-flow: column;
             width: 800px;
@@ -92,6 +124,7 @@
             animation: gradientShift 3s infinite;
             /* 应用渐变动画 */
         }
+
         .Text {
             width: 100%;
             display: flex;
@@ -213,8 +246,8 @@
             background-color: #ffffff;
             /* 初始背景颜色 */
             color: rgb(0, 0, 0);
-           border-radius: 60px;
-           transition: all 0.5s;
+            border-radius: 60px;
+            transition: all 0.5s;
 
         }
 
@@ -240,13 +273,13 @@
             }
         }
 
-        .val{
+        .val {
             /* display: block; */
             text-align: center;
             width: 80px;
             background-color: #f9f9f9;
             border: none;
-            
+
         }
     </style>
 </head>
@@ -259,7 +292,7 @@
 
         <div class="froms">
             <form id="productForm">
-                名称:<input type="text" id="name" >
+                名称:<input type="text" id="name">
                 价格:<input type="number" id="price">
                 库存:<input type="number" id="stock">
                 图片:<input type="file" accept="image/*">
@@ -444,10 +477,10 @@
 
 
 
-            
+
             $('#searchInput').change(function () {
                 let searchValue = $('#searchInput').val().toLowerCase();
-                
+
                 $table.find('.oned').each(function () {
                     let name = $(this).find('.spName').text().toLowerCase();
                     if (name.includes(searchValue)) {
