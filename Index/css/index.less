@@ -1,7 +1,21 @@
+// 字体导入
+@font-face {
+    font-family: 'alimama';
+    src: url('../font/AlimamaFangYuanTiVF-Thin.ttf') format('woff2'),
+        url('../font/AlimamaFangYuanTiVF-Thin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
 body {
     background: url('../img/img5.jpg') center center no-repeat;
     box-sizing: 100% 100%;
 
+
+    font-family: alimama;
     overflow: hidden;
     background-size: cover;
     /* 覆盖整个容器 */
@@ -10,7 +24,7 @@ body {
     background-position: center center;
     /* 将背景图片居中显示 */
 
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, .9);
     font-weight: 700;
     // font-size: 40px;
     display: flex;
@@ -18,6 +32,8 @@ body {
     align-items: center;
 
     .index {
+        // color: white;
+
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -70,6 +86,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 0.5s;
 
         .imgbox {
 
@@ -86,16 +103,17 @@ body {
                 border-radius: 15px;
                 overflow: hidden;
             }
-            
-            .imgY{
+
+            .imgY {
                 transition: all 0.5s;
                 transform: translateY(0px);
             }
+
             img {
                 width: 500px;
                 height: 500px;
                 margin-bottom: 20px;
-                
+
             }
 
         }
@@ -152,6 +170,13 @@ body {
             // align-items: center;
             // justify-content: center;
             box-sizing: border-box;
+            h1,h2{
+                height: 80px;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
             h2:hover,
             h1:hover {
@@ -196,13 +221,35 @@ body {
     }
 
     // 右侧隐藏列表
-    #XiangyinshiLi,
-    #gonnengkuaiBox {
+    .index-hidden {
         display: none;
     }
 
 
 }
+
+
+/* 针对小屏幕设备 (手机) */
+@media screen and (max-width: 599px) {
+    
+  }
+  
+  /* 针对中等屏幕设备 (平板) */
+  @media screen and (min-width: 600px) and (max-width: 1023px) {
+    
+  }
+  
+  /* 针对大屏幕设备 (桌面显示器) */
+  @media screen and (min-width: 1024px) {
+   
+  }
+  
+  /* 针对更大屏幕设备 (大桌面显示器) */
+  @media screen and (min-width: 1200px) {
+
+  }
+
+
 
 // 悬浮动画
 // @keyframes xuanfu {

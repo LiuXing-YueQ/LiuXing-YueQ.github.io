@@ -26,13 +26,14 @@
                             <img src="./Index/img/img-shoufengqin.png" alt=""></img>
                             <img src="./Index/img/img-richengbiao.png" alt="">
 
-                            <img src="./Index/img/img-weinisi.png" alt="" class="yulanImg">
-                            <img src="./Index/img/img-shangpinguangli.png" alt="">
-                            <img src="./Index/img/img-shangpinguangli.png" alt="">
-                            <img src="./Index/img/img-shoufengqin.png" alt=""></img>
+                            <img src="./Index/img/img-KaiFa.png" alt="" class="yulanImg">
+                            <img src="./Index/img/img-KaiFa.png" alt="">
+                            <img src="./Index/img/img-KaiFa.png" alt="">
+                            <img src="./Index/img/img-KaiFa.png" alt=""></img>
 
-                            <img src="./Index/img/img-weinisi.png" alt="" class="yulanImg">
-                            <img src="./Index/img/img-shangpinguangli.png" alt="">
+                            <img src="./Index/img/img-KaiFa.png" alt="" class="yulanImg">
+                            <img src="./Index/img/img-KaiFa.png" alt="">
+                            <img src="./Index/img/img-Qipin.png" alt="">
 
                         </div>
 
@@ -54,7 +55,7 @@
                 </li>
 
                 <li id="gonnengBtn">
-                    <h1>功能项目合集</h1>
+                    <h1>功能项目</h1>
                     <ul class="index-hidden" id="gonnengkuaiBox">
                         <li><a href="./小项目目录/基于jQuer/简易商品管理系统.html">
                                 <h2 data-num="1">商品管理模块</h2>
@@ -75,18 +76,24 @@
                                 <h2 data-num="6">拼图游戏</h2>
                             </a></li>
                         <li><a href="./小项目目录/淘宝放大镜项目/2淘宝商品放大镜项目.html">
-                                <h2 data-num="7">淘宝商品放大镜单选模式</h2>
+                                <h2 data-num="7">商品详情图放大镜[单选|选图]</h2>
                             </a></li>
                         <li><a href="./小项目目录/淘宝放大镜项目/淘宝商品放大镜项目.html">
-                                <h2 data-num="8">淘宝商品放大镜滑块模式</h2>
+                                <h2 data-num="8">商品详情图放大镜[滑块|选图]</h2>
                             </a></li>
                         <li><a href="./小项目目录/简易加密解密系统(js).html">
                                 <h2 data-num="9">简易加密解密系统</h2>
                             </a></li>
                     </ul>
                 </li>
-                <li>
-                    <h1>正在开发中！</h1>
+                <li id="staticBtn">
+                    <h1>静态页面</h1>
+                    <ul class="index-hidden" id="staticBox">
+                        <li><a href="./静态页面/柒品家居页项目/index.html">
+                                <h2 data-num="10">柒品家居页[首页|灯具|分类]</h2>
+                            </a></li>
+
+                    </ul>
                 </li>
                 <li>
                     <h1>正在开发中！</h1>
@@ -168,6 +175,11 @@
         let lis2 = new show('gonnengBtn', 'gonnengkuaiBox')
         lis2.clicks()
 
+        // 静态页面
+        let lis3 = new show('staticBtn', 'staticBox')
+        lis3.clicks()
+
+
 
 
 
@@ -176,7 +188,7 @@
         // 鼠标悬浮事件
 
 
-        let imgnumber = $('.imgY img').length
+        let imgnumber = $('.imgY img').length-1
         let index = 1
 
 
@@ -197,7 +209,11 @@
             index = $(this).data('num');
             // 设置预览图的src属性
             $('.imgY').css('transform', `translateY(-${index * 524}px)`)
+            $(".index-img").css({ 'background':"linear-gradient(to bottom right, rgba(52, 152, 219, .8), rgba(155, 89, 182, .8), rgba(231, 76, 60, .8), rgba(241, 196, 15, .8))"})
         }, function () {
+
+            $(".index-img").css({ 'background':" rgba(255, 255, 255, 0.2)"})
+
             time = setInterval(function () {
                 $('.imgY').css('transform', `translateY(-${index * 524}px)`)
                 index >= imgnumber ? index = 0 : index++

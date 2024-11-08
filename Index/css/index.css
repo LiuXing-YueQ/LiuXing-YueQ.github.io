@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'alimama';
+  src: url('../font/AlimamaFangYuanTiVF-Thin.ttf') format('woff2'), url('../font/AlimamaFangYuanTiVF-Thin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   background: url('../img/img5.jpg') center center no-repeat;
   box-sizing: 100% 100%;
+  font-family: alimama;
   overflow: hidden;
   background-size: cover;
   /* 覆盖整个容器 */
@@ -8,7 +15,7 @@ body {
   /* 固定背景图片 */
   background-position: center center;
   /* 将背景图片居中显示 */
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 700;
   display: flex;
   justify-content: center;
@@ -52,6 +59,7 @@ body .index-img {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s;
 }
 body .index-img .imgbox {
   width: 500px;
@@ -105,6 +113,14 @@ body .index-right li {
   border-radius: 16px;
   box-sizing: border-box;
 }
+body .index-right li h1,
+body .index-right li h2 {
+  height: 80px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body .index-right li h2:hover,
 body .index-right li h1:hover {
   font-weight: bold;
@@ -125,10 +141,13 @@ body .index-right li:hover {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
-body #XiangyinshiLi,
-body #gonnengkuaiBox {
+body .index-hidden {
   display: none;
 }
+/* 针对小屏幕设备 (手机) */
+/* 针对中等屏幕设备 (平板) */
+/* 针对大屏幕设备 (桌面显示器) */
+/* 针对更大屏幕设备 (大桌面显示器) */
 @keyframes gradient-text {
   0%,
   100% {

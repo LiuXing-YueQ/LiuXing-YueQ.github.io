@@ -1,0 +1,664 @@
+/* 网页主体 */
+html,
+body {
+    background-color: #f8f8f8;
+}
+
+/* 版心 */
+.tonyonbanxin {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* 登录注册 */
+
+.loginBox {
+    width: 100%;
+    height: 36px;
+    background-color: #333;
+    border: 1px solid #000;
+}
+
+.loginBox>.banxin {
+    height: 36px;
+    /* background-color: aliceblue; */
+}
+
+.login {
+    width: auto;
+    height: 36px;
+    line-height: 36px;
+    /* background-color: aqua; */
+    color: #fff;
+}
+
+.login>span {
+
+
+    margin: 0 15px;
+
+}
+
+/* 顶部搜索 logo */
+/* 顶部版心 */
+.logoBox {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.logoBox>.banxin {
+    height: 140px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* 搜索 */
+.sousuo {
+    width: 400px;
+    height: 38px;
+    /* background-color: #d68787; */
+    border-radius: 19px;
+    border: 1px solid #43846F;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 搜索图标 */
+.sousuo>img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+}
+
+
+
+.sousuo>input {
+    padding: 0 40px;
+    margin: 0;
+    border: none;
+
+    width: 310px;
+    height: 38px;
+    box-shadow: none;
+    border-radius: 18px 0 0 19px;
+    box-sizing: border-box;
+    /* list-style: none; */
+    outline: none;
+}
+
+/* 搜索按钮 */
+.sousuoBtn {
+    width: 90px;
+    height: 38px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #43846F;
+    color: #fff;
+}
+
+
+/* 购物车 */
+.gouwuche {
+    width: 150px;
+    height: 38px;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 19px;
+    border: 1px solid #000000;
+
+}
+
+.gouwuche>span {
+    font-size: 26px;
+}
+
+.gouwuche>.wenzi {
+    font-size: 14px;
+
+}
+
+.gouwuche>.jishu {
+    width: 21px;
+    height: 21px;
+    background-color: red;
+    border-radius: 11px;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+/* 顶部栏 */
+.TopBox {
+    width: 100%;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(128, 128, 128, 0.5);
+    box-sizing: border-box;
+
+}
+
+.TopBox>.banxin {
+    width: 504px;
+    height: 25px;
+    /* background-color: #333; */
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* line-height: 70px; */
+    text-align: 14px;
+    /* margin-top: 24px; */
+    box-sizing: border-box;
+
+
+}
+
+.banxin .xuanzhon {
+    font-weight: 700;
+    border-bottom: 2px solid #43846F;
+    box-sizing: border-box;
+
+}
+
+.xuanxiang:hover {
+    font-weight: 700;
+    border-bottom: 3px solid #43846F;
+}
+
+
+
+/* 面包屑导航 */
+
+.Breadcrumbs {
+    width: 100%;
+    height: 56px;
+
+}
+
+.Breadcrumbs>.banxin a:hover{
+    color: #43846F;
+}
+
+.Breadcrumbs>.banxin {
+    height: 56px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 12px;
+}
+
+
+.Breadcrumbs>.banxin>.text:last-child{
+    color: #666;
+
+}
+
+.Breadcrumbs>.banxin span {
+    margin: 0 17px; 
+}
+
+
+
+
+/* 主要内容 */
+.Main {
+   margin-bottom: 60px;
+    background-color : white;
+}
+
+/* 筛选区域 */
+.ScreeningBox {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.ScreeningBox>.banxin {
+    height: 132px;
+   
+}
+.ScreeningBox .row .Options:hover{
+    color: #43846F;
+}
+
+.ScreeningBox>.banxin>.row {
+    width: 100%;
+    height: 33%;
+    background-color: #ffffff;
+    font-size: 12px;
+}
+
+.ScreeningBox .row {
+    display: flex;
+    align-items: center;
+    color: #333;
+}
+
+.ScreeningBox  .row:nth-child(1){
+    border-bottom: 1px solid #f5f5f5;
+}
+.ScreeningBox  .row:nth-child(2){
+    border-bottom: 1px solid #f5f5f5;
+}
+
+
+
+.ScreeningBox .row .OX{
+    color: #43846f;
+}
+
+.ScreeningBox .index {
+    margin-left: 15px;
+    margin-right: 40px;
+    color: #666;
+}
+
+.ScreeningBox .Options {
+    margin-right: 30px;
+
+}
+
+
+/* 主要内容盒子 */
+.Main .mainBox {
+    border: 1px solid transparent;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+/* 标题 */
+.Main .title{
+    height: 55px;
+    text-align: center;
+    margin: 67px 0 34px 0;
+}
+.Main .title>p:nth-child(1){
+    font-size: 28px;
+    margin-bottom: 13px;
+    font-weight: 700;
+}
+.Main .title>p:nth-child(2){
+    font-size: 14px;
+    color:#666 ;
+}
+
+/* 主要内容 */
+.Main .mainBox .BigBox {
+    width: 100%;
+    height: 345px;
+    /* background-color: #43846F; */
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+/* .Main .mainBox .BigBox:nth-child(4){
+    margin-bottom: 60px;
+    
+} */
+
+.Main .mainBox .box {
+    width: 270px;
+    height: 345px;
+    /* background-color: #f39797; */
+
+
+}
+
+/* 图片 */
+.Main .mainBox .box .img {
+    width: 270px;
+    height: 270px;
+    /* background-color: antiquewhite; */
+}
+
+/* 底部*/
+
+.Main .mainBox .box .text {
+    width: 270px;
+    height: 75px;
+    /* background-color: aquamarine; */
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 左边价格 */
+.Main .mainBox .box .text .Left {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+}
+
+.Main .mainBox .box .text p:nth-child(1) {
+    color: #666;
+    font-size: 14px;
+
+}
+
+.Main .mainBox .box .text p:nth-child(2) {
+    color: #e56a69;
+    font-size: 14px;
+
+}
+
+.Main .mainBox .box .text p span {
+    color: #bbb;
+    font-size: 12px;
+
+}
+
+/* 右边图标 */
+
+.Main .mainBox .box .right {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+
+    background: url('../image/图标/购物车2.png') center center no-repeat;
+    background-size: 18px 18px;
+    background-position: 40% 45%;
+    background-color: #43846f;
+
+    display: none;
+}
+
+.Main .mainBox .box:hover .text>.right {
+    display: block;
+
+}
+
+.Main .mainBox .box:hover {
+    box-shadow: 0 0 20px #b9b9b9;
+}
+
+/* 吊灯第一层图片 */
+.Main .mainBox .box .a1 {
+    background: url('../image/灯具列表页/吊灯/图像1.png') center center no-repeat
+}
+
+.Main .mainBox .box .a2 {
+    background: url('../image/灯具列表页/吊灯/图像2.png') center center no-repeat
+}
+
+.Main .mainBox .box .a3 {
+    background: url('../image/灯具列表页/吊灯/图像3.png') center center no-repeat
+}
+
+.Main .mainBox .box .a4 {
+    background: url('../image/灯具列表页/吊灯/图像4.png') center center no-repeat
+}
+
+/* 吊灯第二层图片 */
+.Main .mainBox .box .b1 {
+    background: url('../image/灯具列表页/吊灯/图像5.png') center center no-repeat
+}
+
+.Main .mainBox .box .b2 {
+    background: url('../image/灯具列表页/吊灯/图像6.png') center center no-repeat
+}
+
+.Main .mainBox .box .b3 {
+    background: url('../image/灯具列表页/吊灯/图像7.png') center center no-repeat
+}
+
+.Main .mainBox .box .b4 {
+    background: url('../image/灯具列表页/吊灯/图像8.png') center center no-repeat
+}
+
+
+/* 台灯第一层图片 */
+.Main .taideng .box .a1 {
+    background: url('../image/灯具列表页/台灯/图像9.png') center center no-repeat
+}
+
+.Main .taideng .box .a2 {
+    background: url('../image/灯具列表页/台灯/图像10.png') center center no-repeat
+}
+
+.Main .taideng .box .a3 {
+    background: url('../image/灯具列表页/台灯/图像11.png') center center no-repeat
+}
+
+.Main .taideng .box .a4 {
+    background: url('../image/灯具列表页/台灯/图像12.png') center center no-repeat
+}
+
+/* 台灯第二层图片 */
+.Main .taideng .box .b1 {
+    background: url('../image/灯具列表页/台灯/图像13.png') center center no-repeat
+}
+
+.Main .taideng .box .b2 {
+    background: url('../image/灯具列表页/台灯/图像14.png') center center no-repeat
+}
+
+.Main .taideng .box .b3 {
+    background: url('../image/灯具列表页/台灯/图像15.png') center center no-repeat
+}
+
+.Main .taideng .box .b4 {
+    background: url('../image/灯具列表页/台灯/图像16.png') center center no-repeat
+}
+
+
+/* 落地灯第一层图片 */
+.Main .luodideng  .box .a1 {
+    background: url('../image/灯具列表页/落地灯/图像17.png') center center no-repeat
+}
+
+.Main .luodideng  .box .a2 {
+    background: url('../image/灯具列表页/落地灯/图像18.png') center center no-repeat
+}
+
+.Main .luodideng  .box .a3 {
+    background: url('../image/灯具列表页/落地灯/图像19.png') center center no-repeat
+}
+
+.Main .luodideng  .box .a4 {
+    background: url('../image/灯具列表页/落地灯/图像20.png') center center no-repeat
+}
+
+/* 落地灯第二层图片 */
+.Main .luodideng  .box .b1 {
+    background: url('../image/灯具列表页/落地灯/图像21.png') center center no-repeat
+}
+
+.Main .luodideng  .box .b2 {
+    background: url('../image/灯具列表页/落地灯/图像22.png') center center no-repeat
+}
+
+.Main .luodideng  .box .b3 {
+    background: url('../image/灯具列表页/落地灯/图像23.png') center center no-repeat
+}
+
+.Main .luodideng  .box .b4 {
+    background: url('../image/灯具列表页/落地灯/图像24.png') center center no-repeat
+}
+
+/* 灯具组合第一层图片 */
+.Main .Lighting  .box .a1 {
+    background: url('../image/灯具列表页/灯具组合/图像25.png') center center no-repeat
+}
+
+.Main .Lighting  .box .a2 {
+    background: url('../image/灯具列表页/灯具组合/图像26.png') center center no-repeat
+}
+
+.Main .Lighting  .box .a3 {
+    background: url('../image/灯具列表页/灯具组合/图像27.png') center center no-repeat
+}
+
+.Main .Lighting  .box .a4 {
+    background: url('../image/灯具列表页/灯具组合/图像28.png') center center no-repeat
+}
+
+/* 灯具组合第二层图片 */
+.Main .Lighting  .box .b1 {
+    background: url('../image/灯具列表页/灯具组合/图像29.png') center center no-repeat
+}
+
+.Main .Lighting  .box .b2 {
+    background: url('../image/灯具列表页/灯具组合/图像30.png') center center no-repeat
+}
+
+.Main .Lighting  .box .b3 {
+    background: url('../image/灯具列表页/灯具组合/图像31.png') center center no-repeat
+}
+
+.Main .Lighting  .box .b4 {
+    background: url('../image/灯具列表页/灯具组合/图像32.png') center center no-repeat
+}
+
+/* 底部栏 */
+
+/* 底部栏 */
+
+.bottomEndBox {
+    margin-top: 120px;
+    width: 100%;
+    height: 512px;
+    background-color: #222222;
+    box-sizing: border-box;
+}
+
+/* 图标简介 */
+.iconJianjie {
+
+    width: 1284px;
+    padding: 50px 42px;
+
+    height: 182px;
+    /* background-color: #b9b9b9; */
+    box-sizing: border-box;
+
+    border-bottom: 2px solid #d2d2d2;
+}
+
+.iconJianjie .icon {
+    color: white;
+    height: 81px;
+    float: left;
+    margin-right: 208px;
+}
+
+.iconJianjie .icon:nth-child(5) {
+    margin-right: 0;
+}
+
+
+
+.iconJianjie .icon p {
+    color: white;
+    margin-top: 14px;
+}
+
+
+.iconJianjie .imgs {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background-size: 50px 50px;
+}
+
+.iconJianjie .ic1 {
+    background: url('../image/图标/绿色环保.png') center center no-repeat;
+}
+
+.iconJianjie .ic2 {
+    background: url('../image/图标/天猫-极速退款.png') center center no-repeat;
+}
+
+.iconJianjie .ic3 {
+    background: url('../image/图标/配送安装\(1\).png') center center no-repeat;
+}
+
+.iconJianjie .ic4 {
+    background: url('../image/图标/退货保障.png') center center no-repeat;
+}
+
+.iconJianjie .ic5 {
+    background: url('../image/图标/送货上门.png') center center no-repeat;
+}
+
+
+/* 广告 */
+
+.dibuguanggao {
+    width: 955px;
+    height: 150px;
+    margin: 50px auto;
+    /* background-color: #5e5e5e; */
+
+}
+
+.dibuguanggao .Right {
+    width: 585px;
+    height: 180px;
+
+}
+
+
+.dibuguanggao .Right .title .items {
+    padding-top: 29px;
+    /* background-color: #2b6e5a; */
+    box-sizing: border-box;
+
+}
+
+.dibuguanggao .Right .title {
+    font-size: 14px;
+    color: #a0a0a0;
+    margin-right: 105px;
+    margin-bottom: 0;
+}
+
+.dibuguanggao .Right .title .items>li {
+    margin-bottom: 19px;
+    font-size: 12px;
+}
+
+.dibuguanggao .Right .title:nth-child(4) {
+    margin-right: 0;
+}
+
+/* 底部版权 */
+.banquan {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 80px;
+    background-color: #333;
+    color: #999;
+}
