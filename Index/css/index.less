@@ -7,7 +7,65 @@
     font-style: normal;
 }
 
+// .color-change {
 
+@keyframes colorsss {
+    0% {
+        color: #ffffff;
+    }
+
+    25% {
+        color: #87CEEB;
+    }
+
+
+
+    50% {
+        color: #000080;
+    }
+
+
+    100% {
+        color: #ffffff;
+    }
+
+
+
+
+
+}
+
+
+// 顶部栏
+// 项目开发总览
+.kaifa {
+
+    // position: fixed;
+    // top: 100px;
+    // right: 50%;
+    margin-top: 40px;
+    height: 100px;
+    width: 1280px;
+
+    font-size: 80px;
+    text-align: center;
+
+    animation: colorsss 8s infinite;
+
+    letter-spacing: 30px;
+
+
+    color: rgba(255, 255, 255, .9);
+    // 毛玻璃效果
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+
+}
 
 
 body {
@@ -30,12 +88,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
 
     .index {
         // color: white;
 
         width: 100vw;
-        height: 100vh;
+        height: 80vh;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -83,6 +142,8 @@ body {
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
+
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -170,7 +231,9 @@ body {
             // align-items: center;
             // justify-content: center;
             box-sizing: border-box;
-            h1,h2{
+
+            h1,
+            h2 {
                 height: 80px;
                 margin: 0;
                 display: flex;
@@ -230,24 +293,16 @@ body {
 
 
 /* 针对小屏幕设备 (手机) */
-@media screen and (max-width: 599px) {
-    
-  }
-  
-  /* 针对中等屏幕设备 (平板) */
-  @media screen and (min-width: 600px) and (max-width: 1023px) {
-    
-  }
-  
-  /* 针对大屏幕设备 (桌面显示器) */
-  @media screen and (min-width: 1024px) {
-   
-  }
-  
-  /* 针对更大屏幕设备 (大桌面显示器) */
-  @media screen and (min-width: 1200px) {
+@media screen and (max-width: 599px) {}
 
-  }
+/* 针对中等屏幕设备 (平板) */
+@media screen and (min-width: 600px) and (max-width: 1023px) {}
+
+/* 针对大屏幕设备 (桌面显示器) */
+@media screen and (min-width: 1024px) {}
+
+/* 针对更大屏幕设备 (大桌面显示器) */
+@media screen and (min-width: 1200px) {}
 
 
 
