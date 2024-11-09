@@ -144,12 +144,14 @@
             <input class="tianjia" type="text"><button class="queren">添加</button>
             <button class="qingchu">清除所有</button>
 
-            <select name="" id="zhiye">
+            <!-- <select name="" id="zhiye">
                 <option value="0">素问</option>
                 <option value="1">玄机</option>
 
                 <option value="2">铁衣</option>
-            </select>
+            </select> -->
+
+            <input type="color" id="zhiye">
         </div>
     </div>
 
@@ -161,7 +163,7 @@
         let zhiyue = document.querySelector('#zhiye')
 
         let qingchubtn = document.querySelector('.qingchu')
-        let zhiyenum = 0
+        let zhiyenum = ''
 
         let table = document.querySelector('#scheduleBody')
 
@@ -211,9 +213,12 @@
         //     generateCourseList()
         // });
 
-        zhiye.oninput = function () {
 
-            zhiyenum = Number(this.value)
+        zhiye.onchange = function () {
+
+
+
+            zhiyenum = this.value
 
             console.log(zhiyenum);
 
@@ -222,42 +227,42 @@
 
         btn.onclick = function () {
             let val = inp.value
-            let color = ''
+            let color = zhiyenum
             let type = ''
-            switch (zhiyenum) {
-                case 0:
-                    color = '#ffcccc'
-                    type = '素问'
-                    break;
-                case 1:
-                    color = '#ccffcc'
-                    type = '玄机'
+            // switch (zhiyenum) {
+            //     case 0:
+            //         color = '#ffcccc'
+            //         type = '素问'
+            //         break;
+            //     case 1:
+            //         color = '#ccffcc'
+            //         type = '玄机'
 
-                    break;
-                case 2:
-                    color = '#ccccff'
-                    type = '铁衣'
+            //         break;
+            //     case 2:
+            //         color = '#ccccff'
+            //         type = '铁衣'
 
-                    break;
-                case 3:
-                    color = '#ffccff'
-                    type = '素问'
+            //         break;
+            //     case 3:
+            //         color = '#ffccff'
+            //         type = '素问'
 
-                    break;
-                case 4:
-                    color = '#ccffff'
-                    type = '素问'
+            //         break;
+            //     case 4:
+            //         color = '#ccffff'
+            //         type = '素问'
 
-                    break;
-                case 5:
-                    color = '#ffffcc'
-                    type = '素问'
+            //         break;
+            //     case 5:
+            //         color = '#ffffcc'
+            //         type = '素问'
 
-                    break;
+            //         break;
 
-                default:
-                    break;
-            }
+            //     default:
+            //         break;
+            // }
 
 
             let ssr = {
@@ -373,7 +378,7 @@
                 scheduleState.forEach((rowState, rowIndex) => {
                     rowState.forEach((cellState, cellIndex) => {
                         if (cellState) {
-                            const cell = rows[rowIndex].cells[cellIndex +1]; // 加1跳过时间段单元格
+                            const cell = rows[rowIndex].cells[cellIndex + 1]; // 加1跳过时间段单元格
                             cell.textContent = cellState;
                             const course = courses.find(c => c.name === cellState);
                             if (course) {
@@ -410,15 +415,45 @@
 
         // 页面加载时初始化
         document.addEventListener('DOMContentLoaded', () => {
-            console.log(courses);
-            let sse = localStorage.getItem('courses')
-            courses = JSON.parse(sse)
-            generateCourseList();
-            initializeTimeSlots();
-            restoreScheduleState();
+
+            if (typeof (Storage) !== "undefined") {
+                // 检查localStorage是否为空
+                if (localStorage.length === 0) {
+                    console.log("localStorage是空的");
+                } else {
+                    console.log("localStorage不为空");
+                }
+
+                // 检查特定的键是否存在
+                var key = "courses";
+                if (localStorage.getItem(key) === null) {
+                    console.log(courses);
+                    let sse = localStorage.getItem('courses')
+                    courses = JSON.parse(sse)
+                    generateCourseList();
+                    initializeTimeSlots();
+                    restoreScheduleState();
+                } else {
+                    console.log(key + "在localStorage中存在");
+                    let st = []
+                    localStorage.setItem('courses', JSON.stringify(st))
+                    let sse = localStorage.getItem('courses')
+                    courses = JSON.parse(sse)
+                    generateCourseList();
+                    initializeTimeSlots();
+                    restoreScheduleState();
+                }
+            } else {
+                // 浏览器不支持localStorage
+                console.log("浏览器不支持localStorage");
+            }
+
         });
+
+
+
     </script>
-    ``
+
 
 </body>
 
