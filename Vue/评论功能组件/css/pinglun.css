@@ -1,0 +1,64 @@
+.body {
+  width: 100%;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+main #sddd {
+  width: 70%;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+}
+main #sddd .pl {
+  width: 60%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 0 20px;
+}
+main #sddd .btn {
+  height: 35px;
+  padding: 0 5px;
+  background-color: skyblue;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+main #sddd .usname {
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+}
+main #sddd .usname span {
+  color: skyblue;
+  font-weight: 700;
+}
+main #sddd .pinglunBox {
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  margin-top: 50px;
+  height: 550px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+main #sddd .pinglunBox::-webkit-scrollbar {
+  width: 0;
+}
+/*# sourceMappingURL=./pinglun.css.map */

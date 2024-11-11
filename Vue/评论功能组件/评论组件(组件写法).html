@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="./css/pinglun.css">
+</head>
+
+<body>
+    <main>
+        <h1>===评论===</h1>
+        <div id="sddd">
+
+            <div class="usname">
+
+                <input type="text" v-model="Uname" placeholder="用户名" v-if="usShow"class="pl">
+                <div v-else class="">当前用户名：<span>{{Uname}}</span></div>
+                <br>
+    
+                
+                <input type="text" v-model="Plun" placeholder="评论内容" class="pl">
+    
+    
+                <button v-on:click="fabu" class="btn">发布评论</button>
+                <button v-on:click="xiugai" class="btn">修改用户名</button>
+
+            </div>
+
+
+            <div class="pinglunBox">
+                <index-pinglun v-for="(pingluns,index) in pinglun" v-bind:user="pingluns" v-bind:index-num="index"
+                    v-on:del="Del(index)"></index-pinglun>
+            </div>
+
+
+
+
+
+        </div>
+       
+    </main>
+
+    <script>
+
+
+
+        Vue.component("index-pinglun", {
+            props: ['user'],
+            template: `
+            <div>
+            <h3 > <span style="color:skyblue;">{{user.username}}</span>  说:</h3>
+            <p>{{user.pingL}}</p> 
+            <button v-on:click="$emit('del')" class="btn">删除</button>
+            <hr> </div>
+            `
+        })
+
+
+
+        let sd = new Vue({
+            el: "#sddd",
+            data: {
+                msg: "啦啦啦啦啦啦啦",
+                miaoshu: "我是描述",
+                Uname: "",
+                Plun: "",
+                usShow: true,
+                id: Date.now(),
+                pinglun: [
+                    { username: '用户名', pingL: "评论内容" }
+                ]
+            },
+            methods: {
+                fabu() {
+
+                    if (this.Uname && this.Plun) {
+                        this.pinglun.push({ username: this.Uname, pingL: this.Plun, Id: this.id })
+                        this.Plun = ""
+                        this.usShow = false
+
+                        localStorage.setItem("user", JSON.stringify({
+                            "usname": this.Uname,
+                            "pingL": false
+                        }))
+
+                        localStorage.setItem("pinglun", JSON.stringify(this.pinglun))
+                    }
+
+                },
+                xiugai() {
+
+
+                    this.usShow = true
+                    localStorage.setItem("user", JSON.stringify({
+                        "usname": this.Uname,
+                        "xiugai": true
+                    }))
+                },
+
+
+                Del(index) {
+                    // 寻找触发事件的元素
+                    // let eve = event.target
+                    // let fuyuansu = eve.parentNode
+                    // console.log(fuyuansu);
+
+
+                    this.pinglun.splice(index, 1)
+                    localStorage.setItem("pinglun", JSON.stringify(this.pinglun))
+                }
+
+
+
+            },
+            created() {
+
+                let sst = JSON.parse(localStorage.getItem("user"))
+
+                if (localStorage.getItem('pinglun')) {
+
+                    let pl = JSON.parse(localStorage.getItem('pinglun'))
+                    this.pinglun = pl
+                } else {
+                    localStorage.setItem("pinglun", JSON.stringify(this.pinglun))
+                    let pl = JSON.parse(localStorage.getItem('pinglun'))
+                    this.pinglun = pl
+                }
+
+                this.Uname = sst.usname
+                this.usShow = sst.xiugai
+
+
+            }
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>
