@@ -12,7 +12,7 @@
 <body>
 
     <header>
-       <div class="kaifa">项目开发总览</div>
+        <div class="kaifa">项目开发总览</div>
     </header>
 
 
@@ -27,18 +27,21 @@
                         <div class="imgY">
 
                             <img src="./Index/img/img-weinisi.png" alt="" class="yulanImg">
+                            
                             <img src="./Index/img/img-shangpinguangli.png" alt="">
                             <img src="./Index/img/img-shoufengqin.png" alt=""></img>
                             <img src="./Index/img/img-richengbiao.png" alt="">
-
                             <img src="./Index/img/kaifa.png" alt="" class="yulanImg">
                             <img src="./Index/img/kaifa.png" alt="">
                             <img src="./Index/img/kaifa.png" alt="">
                             <img src="./Index/img/kaifa.png" alt=""></img>
-
                             <img src="./Index/img/kaifa.png" alt="" class="yulanImg">
                             <img src="./Index/img/kaifa.png" alt="">
+                            
                             <img src="./Index/img/img-Qipin.png" alt="">
+                            
+                            <img src="./Index/img/kaifa.png" alt="">
+                            <img src="./Index/img/img-pinglun.png" alt="">
 
                         </div>
 
@@ -100,8 +103,29 @@
 
                     </ul>
                 </li>
-                <li>
-                    <h1>正在开发中！</h1>
+                <li id="VueBtn">
+                    <h1>Vue</h1>
+                    <ul id="VueBox" class="index-hidden">
+                        <li>
+                            <h1 id="Vue2btn">Vue2</h1>
+                            <ul id="Vue2Box" class="index-hidden">
+                                
+                                <li><a href="./Vue/评论功能组件/评论组件(组件写法).html">
+                                        <h2 data-num="12">评论组件 [写入浏览器存储|用户名状态记忆]</h2>
+                                    </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h1 id="Vue3btn">Vue3</h1>
+                            <ul id="Vue3Box" class="index-hidden">
+                                
+                                <li><a href="./">
+                                        <h2 data-num="9">正在开发中！</h2>
+                                    </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
                 </li>
                 <li>
                     <h1>正在开发中！</h1>
@@ -148,9 +172,10 @@
                 let btn = this.btnname
                 let id = this.id
 
-                $(`#${btn}`).click(function () {
+                $(`#${btn}`).click(function (event) {
 
-
+                    // 阻止事件冒泡
+                    event.stopPropagation();
                     let contentBox = $(`#${id}`);
                     console.log(contentBox);
 
@@ -185,6 +210,17 @@
         lis3.clicks()
 
 
+        // Vue 
+        // Vue一级盒子
+        let VueBox = new show('VueBtn', 'VueBox')
+        VueBox.clicks()
+        
+        let Vue2Box = new show('Vue2btn', 'Vue2Box')
+        Vue2Box.clicks()
+
+        let Vue3Box = new show('Vue3btn', 'Vue3Box')
+        Vue3Box.clicks()
+
 
 
 
@@ -193,7 +229,7 @@
         // 鼠标悬浮事件
 
 
-        let imgnumber = $('.imgY img').length-1
+        let imgnumber = $('.imgY img').length - 1
         let index = 1
 
 
@@ -211,13 +247,13 @@
         $('.index-right h2').hover(function () {
             clearInterval(time);
             // 获取当前项目的数据图片属性
-            index = $(this).data('num');   
+            index = $(this).data('num');
             // 设置预览图的src属性
             $('.imgY').css('transform', `translateY(-${index * 524}px)`)
-            $(".index-img").css({ 'background':"linear-gradient(to bottom right, rgba(52, 152, 219, .8), rgba(155, 89, 182, .8), rgba(231, 76, 60, .8), rgba(241, 196, 15, .8))"})
+            $(".index-img").css({ 'background': "linear-gradient(to bottom right, rgba(52, 152, 219, .8), rgba(155, 89, 182, .8), rgba(231, 76, 60, .8), rgba(241, 196, 15, .8))" })
         }, function () {
 
-            $(".index-img").css({ 'background':" rgba(255, 255, 255, 0.2)"})
+            $(".index-img").css({ 'background': " rgba(255, 255, 255, 0.2)" })
 
             time = setInterval(function () {
                 $('.imgY').css('transform', `translateY(-${index * 524}px)`)
