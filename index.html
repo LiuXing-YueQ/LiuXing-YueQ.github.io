@@ -44,6 +44,8 @@
                             <img src="./Index/img/kaifa.png" alt="">
                             <img src="./Index/img/img-pinglun.png" alt="">
 
+                            <img src="./Index/img/img-weinisi.png" alt="" class="yulanImg">
+
                         </div>
 
                     </div>
@@ -52,14 +54,15 @@
             </div>
 
             <!-- 切换按钮 -->
-             <div class="btns">
+            <div class="btns">
                 <span>全屏开关</span>
                 <label class="switch">
-                
-                <input type="checkbox" id="slider">
-                <span class="slider round"></span>
-            </label></div>
-            
+
+                    <input type="checkbox" id="slider">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
 
             <ul class="index-right">
 
@@ -220,7 +223,7 @@
                 $(".index").css("height", "100%")
                 $(".index-img").css("width", "60%")
                 $(".index-img").css("height", "100%")
-                
+
                 $(".index-right").css("width", "30%")
                 $(".index-right").css("height", "100%")
 
@@ -230,7 +233,7 @@
                 setTimeout(() => {
                     $(".imgY img").css("width", `${$('.imgbox').width()}`)
                     $(".imgY img").css("height", `${$('.imgbox').height()}`)
-                    hei = $('.imgbox').height() +26
+                    hei = $('.imgbox').height() + 26
                 }, 500);
 
 
@@ -296,7 +299,36 @@
 
         let time = setInterval(function () {
             $('.imgY').css('transform', `translateY(-${index * hei}px)`)
-            index >= imgnumber ? index = 0 : index++
+
+            if (index > imgnumber) {
+                    $('.imgY').css('transition', `none`)
+
+                    console.log(1);
+
+                    index = 0
+
+                    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+
+
+                    console.log($('.imgY').transform);
+
+                    index++
+                    // if (index) {
+
+                    // }
+
+                } else if (index == 1) {
+                    $('.imgY').css('transition', `all 0.5s`)
+                    console.log(3);
+                    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+                    index++
+
+                } else {
+                    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+                    index++
+                }
+
+            // index >= imgnumber ? index = 0 : index++
 
             console.log('正在轮播1');
 
@@ -315,9 +347,38 @@
 
             $(".index-img").css({ 'background': " rgba(255, 255, 255, 0.2)" })
 
+
+
             time = setInterval(function () {
-                $('.imgY').css('transform', `translateY(-${index * hei}px)`)
-                index >= imgnumber ? index = 0 : index++
+
+                // index >= imgnumber ? index = 0 : index++
+                if (index > imgnumber) {
+                    $('.imgY').css('transition', `none`)
+
+                    console.log(1);
+
+                    index = 0
+
+                    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+
+
+                    console.log($('.imgY').transform);
+
+                    index++
+                    // if (index) {
+
+                    // }
+
+                } else if (index == 1) {
+                    $('.imgY').css('transition', `all 0.5s`)
+                    console.log(3);
+                    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+                    index++
+
+                } else {
+                    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+                    index++
+                }
 
                 console.log('正在轮播2');
 

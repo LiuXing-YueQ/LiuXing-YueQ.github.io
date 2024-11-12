@@ -18,6 +18,9 @@
     color: #ffffff;
   }
 }
+.no-transition {
+  transition: none !important;
+}
 .kaifa {
   margin-top: 40px;
   height: 100px;
