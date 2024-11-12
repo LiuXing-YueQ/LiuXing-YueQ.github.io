@@ -16,8 +16,8 @@
 
             <div class="usname">
 
-                <input type="text" v-model="Uname" placeholder="用户名" v-if="usShow"class="pl">
-                <div v-else class="">当前用户名：<span>{{Uname}}</span></div>
+                <input type="text" v-model="Uname" placeholder="用户名" v-show="usShow" class="pl">
+                <div v-show="!usShow" class="">当前用户名：<span>{{Uname}}</span></div>
                 <br>
     
                 

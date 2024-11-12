@@ -80,7 +80,7 @@
   height: 26px;
   width: 26px;
   left: 4px;
-  bottom: 4px;
+  bottom: 30px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -92,10 +92,10 @@
   box-shadow: 0 0 1px #2196F3;
 }
 .btns .switch input:checked + .slider:before {
-  -webkit-transform: translateY(-26px);
+  -webkit-transform: translateY(26px);
   /* 调整为垂直移动 */
-  -ms-transform: translateY(-26px);
-  transform: translateY(-26px);
+  -ms-transform: translateY(26px);
+  transform: translateY(26px);
 }
 .btns .switch .slider.round {
   border-radius: 34px;
