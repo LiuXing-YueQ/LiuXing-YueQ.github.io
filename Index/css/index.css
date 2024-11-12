@@ -106,6 +106,19 @@
 .btns .switch .slider.round:before {
   border-radius: 50%;
 }
+.swiper {
+  width: 80%;
+  height: 80%;
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
 main {
   height: 100%;
   width: 100%;
@@ -121,7 +134,7 @@ body {
   box-sizing: 100% 100%;
   height: 100%;
   font-family: alimama;
-  overflow: hidden;
+  scrollbar-width: none;
   background-size: cover;
   /* 覆盖整个容器 */
   background-attachment: fixed;
@@ -134,6 +147,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-flow: column;
+}
+body::-webkit-scrollbar {
+  width: 0;
 }
 body .index {
   width: 1282px;
@@ -193,10 +209,17 @@ body .index-img .imgbox .imgY {
   transform: translateY(0px);
 }
 body .index-img .imgbox img {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   margin-bottom: 20px;
   transition: all 0.5s;
+}
+body .index-img .imgbox .img-lunbo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 body .index-right {
   margin: 0;

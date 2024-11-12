@@ -53,11 +53,14 @@ $('#slider').on('click', function () {
         // $(".imgY img").css("width","auto")
         // $(".imgY img").css("height","891px")
 
-        setTimeout(() => {
-            $(".imgY img").css("width", `${$('.imgbox').width()}`)
-            $(".imgY img").css("height", `${$('.imgbox').height()}`)
-            hei = $('.imgbox').height() + 26
-        }, 500);
+        // setTimeout(() => {
+        //     $(".imgY img").css("width", `${$('.imgbox').width()}`)
+        //     $(".imgY img").css("height", `${$('.imgbox').height()}`)
+        //     hei = $('.imgbox').height() + 26
+        // }, 500);
+
+        $(".swiper").css("width", "80%")
+        $(".swiper").css("height", "85%")
 
 
         localStorage.setItem('btn', btn)
@@ -69,10 +72,12 @@ $('#slider').on('click', function () {
         $(".index-img").css("height", "560px")
         $(".index-right").css("width", "400px")
         $(".index-right").css("height", "560px")
+        
+        $(".swiper").css("width", "80%")
 
-        $(".imgY img").css("width", "500px")
-        $(".imgY img").css("height", "500px")
-        hei = 524
+        // $(".imgY img").css("width", "500px")
+        // $(".imgY img").css("height", "500px")
+        // hei = 524
 
         localStorage.setItem('btn', btn)
 
@@ -160,11 +165,11 @@ let time = setInterval(function () {
 
 // 悬浮换图事件
 $('.index-right h2').hover(function () {
-    clearInterval(time);
-    // 获取当前项目的数据图片属性
-    index = $(this).data('num');
-    // 设置预览图的src属性
-    $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+//     clearInterval(time);
+//     // 获取当前项目的数据图片属性
+//     index = $(this).data('num');
+//     // 设置预览图的src属性
+//     $('.imgY').css('transform', `translateY(-${index * hei}px)`)
     $(".index-img").css({ 'background': "linear-gradient(to bottom right, rgba(52, 152, 219, .8), rgba(155, 89, 182, .8), rgba(231, 76, 60, .8), rgba(241, 196, 15, .8))" })
 }, function () {
 
@@ -172,44 +177,65 @@ $('.index-right h2').hover(function () {
 
 
 
-    time = setInterval(function () {
+    // time = setInterval(function () {
 
-        // index >= imgnumber ? index = 0 : index++
-        if (index > imgnumber) {
-            $('.imgY').css('transition', `none`)
+    //     // index >= imgnumber ? index = 0 : index++
+    //     if (index > imgnumber) {
+    //         $('.imgY').css('transition', `none`)
 
-            console.log(1);
+    //         console.log(1);
 
-            index = 0
+    //         index = 0
 
-            $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+    //         $('.imgY').css('transform', `translateY(-${index * hei}px)`)
 
 
-            console.log($('.imgY').transform);
+    //         console.log($('.imgY').transform);
 
-            index++
-            // if (index) {
+    //         index++
+    //         // if (index) {
 
-            // }
+    //         // }
 
-        } else if (index == 1) {
-            $('.imgY').css('transition', `all 0.5s`)
-            console.log(3);
-            $('.imgY').css('transform', `translateY(-${index * hei}px)`)
-            index++
+    //     } else if (index == 1) {
+    //         $('.imgY').css('transition', `all 0.5s`)
+    //         console.log(3);
+    //         $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+    //         index++
 
-        } else {
-            $('.imgY').css('transform', `translateY(-${index * hei}px)`)
-            index++
-        }
+    //     } else {
+    //         $('.imgY').css('transform', `translateY(-${index * hei}px)`)
+    //         index++
+    //     }
 
-        console.log('正在轮播2');
+    //     console.log('正在轮播2');
 
-    }, 3000)
+    // }, 3000)
 
 }
 );
 
 
 
-// 流星雨效果
+// 卡片轮播图
+var swiper = new Swiper(".mySwiper", {
+    effect: "cards",
+    grabCursor: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    }
+});
+
+// Mouseover event to change slides
+var controlBoxes = document.querySelectorAll('.index-right h2');
+controlBoxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
+        var num = box.getAttribute('data-num');
+        swiper.slideTo(Number(num));
+    });
+});

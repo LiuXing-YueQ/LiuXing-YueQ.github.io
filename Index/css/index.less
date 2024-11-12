@@ -157,6 +157,28 @@
     }
 }
 
+// 卡片轮播图
+.swiper {
+    width: 80%;
+    height: 80%;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+
+
+
+
+
 main {
     height: 100%;
     width: 100%;
@@ -178,7 +200,13 @@ body {
 
 
     font-family: alimama;
-    overflow: hidden;
+    // overflow: hidden;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+    
     background-size: cover;
     /* 覆盖整个容器 */
     background-attachment: fixed;
@@ -277,12 +305,19 @@ body {
             }
 
             img {
-                width: 500px;
-                height: 500px;
+                width: 100%;
+                height: 100%;
                 margin-bottom: 20px;
 
                 transition: all 0.5s;
 
+            }
+            .img-lunbo{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
         }
