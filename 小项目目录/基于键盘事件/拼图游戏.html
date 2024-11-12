@@ -6,6 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            display: flex;
+            height: 100%;
+            /* flex-flow: column; */
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+
+        .bigbox {
+            display: flex;
+            flex-flow: column;
+            /* align-items: center; */
+            
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            
+            padding: 20px;
+
+        }
+
         .orgin {
             width: 150px;
             height: 150px;
@@ -34,6 +63,8 @@
             position: relative;
             float: left;
             border: 2px solid;
+
+            
 
         }
 
@@ -71,28 +102,38 @@
 
     </ul>
 
-    <div class="orgin">
-        <img src="./img/banner1.jpg" alt="" />
+    <div class="bigbox">
+        <div class="orgin">
+            <img src="./img/banner1.jpg" alt="" />
+        </div>
+
+
+        <!-- <select class="beishu">
+
+            <option value="80" selected>超简单！傻子都能玩</option>
+
+            <option value="3" selected>3*3</option>
+            <option value="4">4*4</option>
+            <option value="5">5*5</option>
+            <option value="10">10*10</option>
+            <option value="2">超困难！慎入！！！！</option>
+        </select> -->
+
+        <div class="nandu">
+
+            <input type="number" style="width: 30px;" min="3" max="1000" value="3" id="nanduinput">
+
+            <span class="nandutext">难度为:3x3</span>
+
+        </div>
+
+
+
+        <button>开始</button>
+
+        <button class="randons">换一张</button>
+
     </div>
-
-
-    <select class="beishu">
-
-        <option value="80" selected>超简单！傻子都能玩</option>
-
-        <option value="3" selected>3*3</option>
-        <option value="4">4*4</option>
-        <option value="5">5*5</option>
-        <option value="10">10*10</option>
-        <option value="2">超困难！慎入！！！！</option>
-
-
-    </select>
-    <button>开始</button>
-
-    <button class="randons">换一张</button>
-    
-    
 
     <script>
         let imgss = {
@@ -114,6 +155,8 @@
         let randons = document.querySelector('.randons')
         let dizhi = "./img/banner1.jpg"
 
+        let nanduinput = document.querySelector('#nanduinput')
+        let tishi = document.querySelector('.nandutext')
 
         let sr
         // 换一张
@@ -147,13 +190,22 @@
 
 
         // 选择倍率
-        beishu.onchange = function () {
+        // beishu.onchange = function () {
+        //     beilv = this.value
+        //     console.log('当前为', beilv);
+
+        // }
+
+        //输入框倍率
+        nanduinput.onchange = function () {
+
             beilv = this.value
-            console.log('当前为', beilv);
+
+            tishi.textContent = `难度为:${beilv}X${beilv}`
+
+
 
         }
-
-
 
 
 
