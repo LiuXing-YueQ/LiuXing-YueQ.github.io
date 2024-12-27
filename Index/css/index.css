@@ -128,6 +128,8 @@ main {
 }
 html {
   height: 100%;
+  width: 100%;
+  margin: 0;
 }
 body {
   background: url('../img/img5.jpg') center center no-repeat;
